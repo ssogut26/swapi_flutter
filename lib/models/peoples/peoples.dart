@@ -8,7 +8,7 @@ part 'peoples.freezed.dart';
 part 'peoples.g.dart';
 
 @freezed
-abstract class Peoples with _$Peoples {
+class Peoples with _$Peoples {
   const factory Peoples({
     int? count,
     String? next,
@@ -20,14 +20,14 @@ abstract class Peoples with _$Peoples {
 }
 
 @freezed
-abstract class PeopleResults with _$PeopleResults {
+class PeopleResults with _$PeopleResults {
   const factory PeopleResults({
     String? name,
     String? height,
     String? mass,
     String? hair_color,
-    String? skinColor,
-    String? eyeColor,
+    String? skin_color,
+    String? eye_color,
     String? birth_year,
     String? gender,
     String? homeworld,

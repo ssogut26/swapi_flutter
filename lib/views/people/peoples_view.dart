@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/peoples/peoples.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
-import 'package:swapi_flutter/utils/reusableMethots.dart';
+import 'package:swapi_flutter/utils/reusableMethods.dart';
 import 'package:swapi_flutter/views/people/person_view.dart';
 
 class PeoplesView extends StatefulWidget {
@@ -155,7 +155,7 @@ class _PeoplesViewState extends State<PeoplesView> {
           elevation: 3,
           child: Row(
             children: [
-              Methods().photoBox(image),
+              Methods().cachedPhotoBox(image),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(

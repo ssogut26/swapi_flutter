@@ -2,7 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/films/films.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
-import 'package:swapi_flutter/utils/reusableMethots.dart';
+import 'package:swapi_flutter/utils/reusableMethods.dart';
+import 'package:swapi_flutter/views/films/film_view.dart';
 
 class FilmsView extends StatefulWidget {
   const FilmsView({Key? key}) : super(key: key);
@@ -43,15 +44,18 @@ class _FilmsViewState extends State<FilmsView> {
               var image = CachedNetworkImage(imageUrl: imageUrl);
               return GestureDetector(
                 onTap: () {
-                  setState(() {
-                    this.index = index;
-                  });
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return FilmResultsView(
+                      index: index + 1,
+                      image: image,
+                    );
+                  }));
                 },
                 child: Card(
                   clipBehavior: Clip.antiAlias,
                   child: Row(
                     children: [
-                      Methods().photoBox(image),
+                      Methods().cachedPhotoBox(image),
                       Text(title),
                       const Divider(
                         height: 5,

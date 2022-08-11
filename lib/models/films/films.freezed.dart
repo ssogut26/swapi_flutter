@@ -21,8 +21,8 @@ Films _$FilmsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Films {
   int? get count => throw _privateConstructorUsedError;
-  dynamic? get next => throw _privateConstructorUsedError;
-  dynamic? get previous => throw _privateConstructorUsedError;
+  dynamic get next => throw _privateConstructorUsedError;
+  dynamic get previous => throw _privateConstructorUsedError;
   List<FilmResults>? get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,10 +35,7 @@ abstract class $FilmsCopyWith<$Res> {
   factory $FilmsCopyWith(Films value, $Res Function(Films) then) =
       _$FilmsCopyWithImpl<$Res>;
   $Res call(
-      {int? count,
-      dynamic? next,
-      dynamic? previous,
-      List<FilmResults>? results});
+      {int? count, dynamic next, dynamic previous, List<FilmResults>? results});
 }
 
 /// @nodoc
@@ -64,11 +61,11 @@ class _$FilmsCopyWithImpl<$Res> implements $FilmsCopyWith<$Res> {
       next: next == freezed
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       previous: previous == freezed
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       results: results == freezed
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
@@ -83,10 +80,7 @@ abstract class _$$_FilmsCopyWith<$Res> implements $FilmsCopyWith<$Res> {
       __$$_FilmsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? count,
-      dynamic? next,
-      dynamic? previous,
-      List<FilmResults>? results});
+      {int? count, dynamic next, dynamic previous, List<FilmResults>? results});
 }
 
 /// @nodoc
@@ -113,11 +107,11 @@ class __$$_FilmsCopyWithImpl<$Res> extends _$FilmsCopyWithImpl<$Res>
       next: next == freezed
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       previous: previous == freezed
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       results: results == freezed
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
@@ -139,9 +133,9 @@ class _$_Films implements _Films {
   @override
   final int? count;
   @override
-  final dynamic? next;
+  final dynamic next;
   @override
-  final dynamic? previous;
+  final dynamic previous;
   final List<FilmResults>? _results;
   @override
   List<FilmResults>? get results {
@@ -192,8 +186,8 @@ class _$_Films implements _Films {
 abstract class _Films implements Films {
   const factory _Films(
       {final int? count,
-      final dynamic? next,
-      final dynamic? previous,
+      final dynamic next,
+      final dynamic previous,
       final List<FilmResults>? results}) = _$_Films;
 
   factory _Films.fromJson(Map<String, dynamic> json) = _$_Films.fromJson;
@@ -201,9 +195,9 @@ abstract class _Films implements Films {
   @override
   int? get count;
   @override
-  dynamic? get next;
+  dynamic get next;
   @override
-  dynamic? get previous;
+  dynamic get previous;
   @override
   List<FilmResults>? get results;
   @override
@@ -219,11 +213,11 @@ FilmResults _$FilmResultsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FilmResults {
   String? get title => throw _privateConstructorUsedError;
-  int? get episodeId => throw _privateConstructorUsedError;
-  String? get openingCrawl => throw _privateConstructorUsedError;
+  int? get episode_id => throw _privateConstructorUsedError;
+  String? get opening_crawl => throw _privateConstructorUsedError;
   String? get director => throw _privateConstructorUsedError;
   String? get producer => throw _privateConstructorUsedError;
-  String? get releaseDate => throw _privateConstructorUsedError;
+  String? get release_date => throw _privateConstructorUsedError;
   List<String>? get characters => throw _privateConstructorUsedError;
   List<String>? get planets => throw _privateConstructorUsedError;
   List<String>? get starships => throw _privateConstructorUsedError;
@@ -246,11 +240,11 @@ abstract class $FilmResultsCopyWith<$Res> {
       _$FilmResultsCopyWithImpl<$Res>;
   $Res call(
       {String? title,
-      int? episodeId,
-      String? openingCrawl,
+      int? episode_id,
+      String? opening_crawl,
       String? director,
       String? producer,
-      String? releaseDate,
+      String? release_date,
       List<String>? characters,
       List<String>? planets,
       List<String>? starships,
@@ -272,11 +266,11 @@ class _$FilmResultsCopyWithImpl<$Res> implements $FilmResultsCopyWith<$Res> {
   @override
   $Res call({
     Object? title = freezed,
-    Object? episodeId = freezed,
-    Object? openingCrawl = freezed,
+    Object? episode_id = freezed,
+    Object? opening_crawl = freezed,
     Object? director = freezed,
     Object? producer = freezed,
-    Object? releaseDate = freezed,
+    Object? release_date = freezed,
     Object? characters = freezed,
     Object? planets = freezed,
     Object? starships = freezed,
@@ -291,13 +285,13 @@ class _$FilmResultsCopyWithImpl<$Res> implements $FilmResultsCopyWith<$Res> {
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      episodeId: episodeId == freezed
-          ? _value.episodeId
-          : episodeId // ignore: cast_nullable_to_non_nullable
+      episode_id: episode_id == freezed
+          ? _value.episode_id
+          : episode_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      openingCrawl: openingCrawl == freezed
-          ? _value.openingCrawl
-          : openingCrawl // ignore: cast_nullable_to_non_nullable
+      opening_crawl: opening_crawl == freezed
+          ? _value.opening_crawl
+          : opening_crawl // ignore: cast_nullable_to_non_nullable
               as String?,
       director: director == freezed
           ? _value.director
@@ -307,9 +301,9 @@ class _$FilmResultsCopyWithImpl<$Res> implements $FilmResultsCopyWith<$Res> {
           ? _value.producer
           : producer // ignore: cast_nullable_to_non_nullable
               as String?,
-      releaseDate: releaseDate == freezed
-          ? _value.releaseDate
-          : releaseDate // ignore: cast_nullable_to_non_nullable
+      release_date: release_date == freezed
+          ? _value.release_date
+          : release_date // ignore: cast_nullable_to_non_nullable
               as String?,
       characters: characters == freezed
           ? _value.characters
@@ -356,11 +350,11 @@ abstract class _$$_FilmResultsCopyWith<$Res>
   @override
   $Res call(
       {String? title,
-      int? episodeId,
-      String? openingCrawl,
+      int? episode_id,
+      String? opening_crawl,
       String? director,
       String? producer,
-      String? releaseDate,
+      String? release_date,
       List<String>? characters,
       List<String>? planets,
       List<String>? starships,
@@ -384,11 +378,11 @@ class __$$_FilmResultsCopyWithImpl<$Res> extends _$FilmResultsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = freezed,
-    Object? episodeId = freezed,
-    Object? openingCrawl = freezed,
+    Object? episode_id = freezed,
+    Object? opening_crawl = freezed,
     Object? director = freezed,
     Object? producer = freezed,
-    Object? releaseDate = freezed,
+    Object? release_date = freezed,
     Object? characters = freezed,
     Object? planets = freezed,
     Object? starships = freezed,
@@ -403,13 +397,13 @@ class __$$_FilmResultsCopyWithImpl<$Res> extends _$FilmResultsCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      episodeId: episodeId == freezed
-          ? _value.episodeId
-          : episodeId // ignore: cast_nullable_to_non_nullable
+      episode_id: episode_id == freezed
+          ? _value.episode_id
+          : episode_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      openingCrawl: openingCrawl == freezed
-          ? _value.openingCrawl
-          : openingCrawl // ignore: cast_nullable_to_non_nullable
+      opening_crawl: opening_crawl == freezed
+          ? _value.opening_crawl
+          : opening_crawl // ignore: cast_nullable_to_non_nullable
               as String?,
       director: director == freezed
           ? _value.director
@@ -419,9 +413,9 @@ class __$$_FilmResultsCopyWithImpl<$Res> extends _$FilmResultsCopyWithImpl<$Res>
           ? _value.producer
           : producer // ignore: cast_nullable_to_non_nullable
               as String?,
-      releaseDate: releaseDate == freezed
-          ? _value.releaseDate
-          : releaseDate // ignore: cast_nullable_to_non_nullable
+      release_date: release_date == freezed
+          ? _value.release_date
+          : release_date // ignore: cast_nullable_to_non_nullable
               as String?,
       characters: characters == freezed
           ? _value._characters
@@ -464,11 +458,11 @@ class __$$_FilmResultsCopyWithImpl<$Res> extends _$FilmResultsCopyWithImpl<$Res>
 class _$_FilmResults implements _FilmResults {
   const _$_FilmResults(
       {this.title,
-      this.episodeId,
-      this.openingCrawl,
+      this.episode_id,
+      this.opening_crawl,
       this.director,
       this.producer,
-      this.releaseDate,
+      this.release_date,
       final List<String>? characters,
       final List<String>? planets,
       final List<String>? starships,
@@ -489,15 +483,15 @@ class _$_FilmResults implements _FilmResults {
   @override
   final String? title;
   @override
-  final int? episodeId;
+  final int? episode_id;
   @override
-  final String? openingCrawl;
+  final String? opening_crawl;
   @override
   final String? director;
   @override
   final String? producer;
   @override
-  final String? releaseDate;
+  final String? release_date;
   final List<String>? _characters;
   @override
   List<String>? get characters {
@@ -552,7 +546,7 @@ class _$_FilmResults implements _FilmResults {
 
   @override
   String toString() {
-    return 'FilmResults(title: $title, episodeId: $episodeId, openingCrawl: $openingCrawl, director: $director, producer: $producer, releaseDate: $releaseDate, characters: $characters, planets: $planets, starships: $starships, vehicles: $vehicles, species: $species, created: $created, edited: $edited, url: $url)';
+    return 'FilmResults(title: $title, episode_id: $episode_id, opening_crawl: $opening_crawl, director: $director, producer: $producer, release_date: $release_date, characters: $characters, planets: $planets, starships: $starships, vehicles: $vehicles, species: $species, created: $created, edited: $edited, url: $url)';
   }
 
   @override
@@ -561,13 +555,14 @@ class _$_FilmResults implements _FilmResults {
         (other.runtimeType == runtimeType &&
             other is _$_FilmResults &&
             const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.episodeId, episodeId) &&
             const DeepCollectionEquality()
-                .equals(other.openingCrawl, openingCrawl) &&
+                .equals(other.episode_id, episode_id) &&
+            const DeepCollectionEquality()
+                .equals(other.opening_crawl, opening_crawl) &&
             const DeepCollectionEquality().equals(other.director, director) &&
             const DeepCollectionEquality().equals(other.producer, producer) &&
             const DeepCollectionEquality()
-                .equals(other.releaseDate, releaseDate) &&
+                .equals(other.release_date, release_date) &&
             const DeepCollectionEquality()
                 .equals(other._characters, _characters) &&
             const DeepCollectionEquality().equals(other._planets, _planets) &&
@@ -585,11 +580,11 @@ class _$_FilmResults implements _FilmResults {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(episodeId),
-      const DeepCollectionEquality().hash(openingCrawl),
+      const DeepCollectionEquality().hash(episode_id),
+      const DeepCollectionEquality().hash(opening_crawl),
       const DeepCollectionEquality().hash(director),
       const DeepCollectionEquality().hash(producer),
-      const DeepCollectionEquality().hash(releaseDate),
+      const DeepCollectionEquality().hash(release_date),
       const DeepCollectionEquality().hash(_characters),
       const DeepCollectionEquality().hash(_planets),
       const DeepCollectionEquality().hash(_starships),
@@ -615,11 +610,11 @@ class _$_FilmResults implements _FilmResults {
 abstract class _FilmResults implements FilmResults {
   const factory _FilmResults(
       {final String? title,
-      final int? episodeId,
-      final String? openingCrawl,
+      final int? episode_id,
+      final String? opening_crawl,
       final String? director,
       final String? producer,
-      final String? releaseDate,
+      final String? release_date,
       final List<String>? characters,
       final List<String>? planets,
       final List<String>? starships,
@@ -635,15 +630,15 @@ abstract class _FilmResults implements FilmResults {
   @override
   String? get title;
   @override
-  int? get episodeId;
+  int? get episode_id;
   @override
-  String? get openingCrawl;
+  String? get opening_crawl;
   @override
   String? get director;
   @override
   String? get producer;
   @override
-  String? get releaseDate;
+  String? get release_date;
   @override
   List<String>? get characters;
   @override

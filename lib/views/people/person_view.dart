@@ -44,7 +44,7 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
           String mass = snapshot.data?.mass ?? '';
           String gender = snapshot.data?.gender ?? '';
           String hairColor = snapshot.data?.hair_color ?? '';
-          String skinColor = snapshot.data?.skinColor ?? '';
+          String skinColor = snapshot.data?.skin_color ?? '';
           String homeWorld = (snapshot.data?.homeworld ?? '');
 
           return Column(

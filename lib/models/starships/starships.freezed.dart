@@ -228,16 +228,16 @@ mixin _$StarShipResults {
   String? get name => throw _privateConstructorUsedError;
   String? get model => throw _privateConstructorUsedError;
   String? get manufacturer => throw _privateConstructorUsedError;
-  String? get costInCredits => throw _privateConstructorUsedError;
+  String? get cost_in_credits => throw _privateConstructorUsedError;
   String? get length => throw _privateConstructorUsedError;
-  String? get maxAtmospheringSpeed => throw _privateConstructorUsedError;
+  String? get max_atmosphering_speed => throw _privateConstructorUsedError;
   String? get crew => throw _privateConstructorUsedError;
   String? get passengers => throw _privateConstructorUsedError;
-  String? get cargoCapacity => throw _privateConstructorUsedError;
+  String? get cargo_capacity => throw _privateConstructorUsedError;
   String? get consumables => throw _privateConstructorUsedError;
-  String? get hyperdriveRating => throw _privateConstructorUsedError;
+  String? get hyperdrive_rating => throw _privateConstructorUsedError;
   String? get MGLT => throw _privateConstructorUsedError;
-  String? get starshipClass => throw _privateConstructorUsedError;
+  String? get starship_class => throw _privateConstructorUsedError;
   List<String>? get pilots => throw _privateConstructorUsedError;
   List<String>? get films => throw _privateConstructorUsedError;
   DateTime? get created => throw _privateConstructorUsedError;
@@ -259,16 +259,16 @@ abstract class $StarShipResultsCopyWith<$Res> {
       {String? name,
       String? model,
       String? manufacturer,
-      String? costInCredits,
+      String? cost_in_credits,
       String? length,
-      String? maxAtmospheringSpeed,
+      String? max_atmosphering_speed,
       String? crew,
       String? passengers,
-      String? cargoCapacity,
+      String? cargo_capacity,
       String? consumables,
-      String? hyperdriveRating,
+      String? hyperdrive_rating,
       String? MGLT,
-      String? starshipClass,
+      String? starship_class,
       List<String>? pilots,
       List<String>? films,
       DateTime? created,
@@ -290,16 +290,16 @@ class _$StarShipResultsCopyWithImpl<$Res>
     Object? name = freezed,
     Object? model = freezed,
     Object? manufacturer = freezed,
-    Object? costInCredits = freezed,
+    Object? cost_in_credits = freezed,
     Object? length = freezed,
-    Object? maxAtmospheringSpeed = freezed,
+    Object? max_atmosphering_speed = freezed,
     Object? crew = freezed,
     Object? passengers = freezed,
-    Object? cargoCapacity = freezed,
+    Object? cargo_capacity = freezed,
     Object? consumables = freezed,
-    Object? hyperdriveRating = freezed,
+    Object? hyperdrive_rating = freezed,
     Object? MGLT = freezed,
-    Object? starshipClass = freezed,
+    Object? starship_class = freezed,
     Object? pilots = freezed,
     Object? films = freezed,
     Object? created = freezed,
@@ -319,17 +319,17 @@ class _$StarShipResultsCopyWithImpl<$Res>
           ? _value.manufacturer
           : manufacturer // ignore: cast_nullable_to_non_nullable
               as String?,
-      costInCredits: costInCredits == freezed
-          ? _value.costInCredits
-          : costInCredits // ignore: cast_nullable_to_non_nullable
+      cost_in_credits: cost_in_credits == freezed
+          ? _value.cost_in_credits
+          : cost_in_credits // ignore: cast_nullable_to_non_nullable
               as String?,
       length: length == freezed
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
               as String?,
-      maxAtmospheringSpeed: maxAtmospheringSpeed == freezed
-          ? _value.maxAtmospheringSpeed
-          : maxAtmospheringSpeed // ignore: cast_nullable_to_non_nullable
+      max_atmosphering_speed: max_atmosphering_speed == freezed
+          ? _value.max_atmosphering_speed
+          : max_atmosphering_speed // ignore: cast_nullable_to_non_nullable
               as String?,
       crew: crew == freezed
           ? _value.crew
@@ -339,25 +339,25 @@ class _$StarShipResultsCopyWithImpl<$Res>
           ? _value.passengers
           : passengers // ignore: cast_nullable_to_non_nullable
               as String?,
-      cargoCapacity: cargoCapacity == freezed
-          ? _value.cargoCapacity
-          : cargoCapacity // ignore: cast_nullable_to_non_nullable
+      cargo_capacity: cargo_capacity == freezed
+          ? _value.cargo_capacity
+          : cargo_capacity // ignore: cast_nullable_to_non_nullable
               as String?,
       consumables: consumables == freezed
           ? _value.consumables
           : consumables // ignore: cast_nullable_to_non_nullable
               as String?,
-      hyperdriveRating: hyperdriveRating == freezed
-          ? _value.hyperdriveRating
-          : hyperdriveRating // ignore: cast_nullable_to_non_nullable
+      hyperdrive_rating: hyperdrive_rating == freezed
+          ? _value.hyperdrive_rating
+          : hyperdrive_rating // ignore: cast_nullable_to_non_nullable
               as String?,
       MGLT: MGLT == freezed
           ? _value.MGLT
           : MGLT // ignore: cast_nullable_to_non_nullable
               as String?,
-      starshipClass: starshipClass == freezed
-          ? _value.starshipClass
-          : starshipClass // ignore: cast_nullable_to_non_nullable
+      starship_class: starship_class == freezed
+          ? _value.starship_class
+          : starship_class // ignore: cast_nullable_to_non_nullable
               as String?,
       pilots: pilots == freezed
           ? _value.pilots
@@ -394,16 +394,16 @@ abstract class _$$_StarShipResultsCopyWith<$Res>
       {String? name,
       String? model,
       String? manufacturer,
-      String? costInCredits,
+      String? cost_in_credits,
       String? length,
-      String? maxAtmospheringSpeed,
+      String? max_atmosphering_speed,
       String? crew,
       String? passengers,
-      String? cargoCapacity,
+      String? cargo_capacity,
       String? consumables,
-      String? hyperdriveRating,
+      String? hyperdrive_rating,
       String? MGLT,
-      String? starshipClass,
+      String? starship_class,
       List<String>? pilots,
       List<String>? films,
       DateTime? created,
@@ -427,16 +427,16 @@ class __$$_StarShipResultsCopyWithImpl<$Res>
     Object? name = freezed,
     Object? model = freezed,
     Object? manufacturer = freezed,
-    Object? costInCredits = freezed,
+    Object? cost_in_credits = freezed,
     Object? length = freezed,
-    Object? maxAtmospheringSpeed = freezed,
+    Object? max_atmosphering_speed = freezed,
     Object? crew = freezed,
     Object? passengers = freezed,
-    Object? cargoCapacity = freezed,
+    Object? cargo_capacity = freezed,
     Object? consumables = freezed,
-    Object? hyperdriveRating = freezed,
+    Object? hyperdrive_rating = freezed,
     Object? MGLT = freezed,
-    Object? starshipClass = freezed,
+    Object? starship_class = freezed,
     Object? pilots = freezed,
     Object? films = freezed,
     Object? created = freezed,
@@ -456,17 +456,17 @@ class __$$_StarShipResultsCopyWithImpl<$Res>
           ? _value.manufacturer
           : manufacturer // ignore: cast_nullable_to_non_nullable
               as String?,
-      costInCredits: costInCredits == freezed
-          ? _value.costInCredits
-          : costInCredits // ignore: cast_nullable_to_non_nullable
+      cost_in_credits: cost_in_credits == freezed
+          ? _value.cost_in_credits
+          : cost_in_credits // ignore: cast_nullable_to_non_nullable
               as String?,
       length: length == freezed
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
               as String?,
-      maxAtmospheringSpeed: maxAtmospheringSpeed == freezed
-          ? _value.maxAtmospheringSpeed
-          : maxAtmospheringSpeed // ignore: cast_nullable_to_non_nullable
+      max_atmosphering_speed: max_atmosphering_speed == freezed
+          ? _value.max_atmosphering_speed
+          : max_atmosphering_speed // ignore: cast_nullable_to_non_nullable
               as String?,
       crew: crew == freezed
           ? _value.crew
@@ -476,25 +476,25 @@ class __$$_StarShipResultsCopyWithImpl<$Res>
           ? _value.passengers
           : passengers // ignore: cast_nullable_to_non_nullable
               as String?,
-      cargoCapacity: cargoCapacity == freezed
-          ? _value.cargoCapacity
-          : cargoCapacity // ignore: cast_nullable_to_non_nullable
+      cargo_capacity: cargo_capacity == freezed
+          ? _value.cargo_capacity
+          : cargo_capacity // ignore: cast_nullable_to_non_nullable
               as String?,
       consumables: consumables == freezed
           ? _value.consumables
           : consumables // ignore: cast_nullable_to_non_nullable
               as String?,
-      hyperdriveRating: hyperdriveRating == freezed
-          ? _value.hyperdriveRating
-          : hyperdriveRating // ignore: cast_nullable_to_non_nullable
+      hyperdrive_rating: hyperdrive_rating == freezed
+          ? _value.hyperdrive_rating
+          : hyperdrive_rating // ignore: cast_nullable_to_non_nullable
               as String?,
       MGLT: MGLT == freezed
           ? _value.MGLT
           : MGLT // ignore: cast_nullable_to_non_nullable
               as String?,
-      starshipClass: starshipClass == freezed
-          ? _value.starshipClass
-          : starshipClass // ignore: cast_nullable_to_non_nullable
+      starship_class: starship_class == freezed
+          ? _value.starship_class
+          : starship_class // ignore: cast_nullable_to_non_nullable
               as String?,
       pilots: pilots == freezed
           ? _value._pilots
@@ -527,16 +527,16 @@ class _$_StarShipResults implements _StarShipResults {
       {this.name,
       this.model,
       this.manufacturer,
-      this.costInCredits,
+      this.cost_in_credits,
       this.length,
-      this.maxAtmospheringSpeed,
+      this.max_atmosphering_speed,
       this.crew,
       this.passengers,
-      this.cargoCapacity,
+      this.cargo_capacity,
       this.consumables,
-      this.hyperdriveRating,
+      this.hyperdrive_rating,
       this.MGLT,
-      this.starshipClass,
+      this.starship_class,
       final List<String>? pilots,
       final List<String>? films,
       this.created,
@@ -555,25 +555,25 @@ class _$_StarShipResults implements _StarShipResults {
   @override
   final String? manufacturer;
   @override
-  final String? costInCredits;
+  final String? cost_in_credits;
   @override
   final String? length;
   @override
-  final String? maxAtmospheringSpeed;
+  final String? max_atmosphering_speed;
   @override
   final String? crew;
   @override
   final String? passengers;
   @override
-  final String? cargoCapacity;
+  final String? cargo_capacity;
   @override
   final String? consumables;
   @override
-  final String? hyperdriveRating;
+  final String? hyperdrive_rating;
   @override
   final String? MGLT;
   @override
-  final String? starshipClass;
+  final String? starship_class;
   final List<String>? _pilots;
   @override
   List<String>? get pilots {
@@ -601,7 +601,7 @@ class _$_StarShipResults implements _StarShipResults {
 
   @override
   String toString() {
-    return 'StarShipResults(name: $name, model: $model, manufacturer: $manufacturer, costInCredits: $costInCredits, length: $length, maxAtmospheringSpeed: $maxAtmospheringSpeed, crew: $crew, passengers: $passengers, cargoCapacity: $cargoCapacity, consumables: $consumables, hyperdriveRating: $hyperdriveRating, MGLT: $MGLT, starshipClass: $starshipClass, pilots: $pilots, films: $films, created: $created, edited: $edited, url: $url)';
+    return 'StarShipResults(name: $name, model: $model, manufacturer: $manufacturer, cost_in_credits: $cost_in_credits, length: $length, max_atmosphering_speed: $max_atmosphering_speed, crew: $crew, passengers: $passengers, cargo_capacity: $cargo_capacity, consumables: $consumables, hyperdrive_rating: $hyperdrive_rating, MGLT: $MGLT, starship_class: $starship_class, pilots: $pilots, films: $films, created: $created, edited: $edited, url: $url)';
   }
 
   @override
@@ -614,22 +614,22 @@ class _$_StarShipResults implements _StarShipResults {
             const DeepCollectionEquality()
                 .equals(other.manufacturer, manufacturer) &&
             const DeepCollectionEquality()
-                .equals(other.costInCredits, costInCredits) &&
+                .equals(other.cost_in_credits, cost_in_credits) &&
             const DeepCollectionEquality().equals(other.length, length) &&
             const DeepCollectionEquality()
-                .equals(other.maxAtmospheringSpeed, maxAtmospheringSpeed) &&
+                .equals(other.max_atmosphering_speed, max_atmosphering_speed) &&
             const DeepCollectionEquality().equals(other.crew, crew) &&
             const DeepCollectionEquality()
                 .equals(other.passengers, passengers) &&
             const DeepCollectionEquality()
-                .equals(other.cargoCapacity, cargoCapacity) &&
+                .equals(other.cargo_capacity, cargo_capacity) &&
             const DeepCollectionEquality()
                 .equals(other.consumables, consumables) &&
             const DeepCollectionEquality()
-                .equals(other.hyperdriveRating, hyperdriveRating) &&
+                .equals(other.hyperdrive_rating, hyperdrive_rating) &&
             const DeepCollectionEquality().equals(other.MGLT, MGLT) &&
             const DeepCollectionEquality()
-                .equals(other.starshipClass, starshipClass) &&
+                .equals(other.starship_class, starship_class) &&
             const DeepCollectionEquality().equals(other._pilots, _pilots) &&
             const DeepCollectionEquality().equals(other._films, _films) &&
             const DeepCollectionEquality().equals(other.created, created) &&
@@ -644,16 +644,16 @@ class _$_StarShipResults implements _StarShipResults {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(model),
       const DeepCollectionEquality().hash(manufacturer),
-      const DeepCollectionEquality().hash(costInCredits),
+      const DeepCollectionEquality().hash(cost_in_credits),
       const DeepCollectionEquality().hash(length),
-      const DeepCollectionEquality().hash(maxAtmospheringSpeed),
+      const DeepCollectionEquality().hash(max_atmosphering_speed),
       const DeepCollectionEquality().hash(crew),
       const DeepCollectionEquality().hash(passengers),
-      const DeepCollectionEquality().hash(cargoCapacity),
+      const DeepCollectionEquality().hash(cargo_capacity),
       const DeepCollectionEquality().hash(consumables),
-      const DeepCollectionEquality().hash(hyperdriveRating),
+      const DeepCollectionEquality().hash(hyperdrive_rating),
       const DeepCollectionEquality().hash(MGLT),
-      const DeepCollectionEquality().hash(starshipClass),
+      const DeepCollectionEquality().hash(starship_class),
       const DeepCollectionEquality().hash(_pilots),
       const DeepCollectionEquality().hash(_films),
       const DeepCollectionEquality().hash(created),
@@ -678,16 +678,16 @@ abstract class _StarShipResults implements StarShipResults {
       {final String? name,
       final String? model,
       final String? manufacturer,
-      final String? costInCredits,
+      final String? cost_in_credits,
       final String? length,
-      final String? maxAtmospheringSpeed,
+      final String? max_atmosphering_speed,
       final String? crew,
       final String? passengers,
-      final String? cargoCapacity,
+      final String? cargo_capacity,
       final String? consumables,
-      final String? hyperdriveRating,
+      final String? hyperdrive_rating,
       final String? MGLT,
-      final String? starshipClass,
+      final String? starship_class,
       final List<String>? pilots,
       final List<String>? films,
       final DateTime? created,
@@ -704,25 +704,25 @@ abstract class _StarShipResults implements StarShipResults {
   @override
   String? get manufacturer;
   @override
-  String? get costInCredits;
+  String? get cost_in_credits;
   @override
   String? get length;
   @override
-  String? get maxAtmospheringSpeed;
+  String? get max_atmosphering_speed;
   @override
   String? get crew;
   @override
   String? get passengers;
   @override
-  String? get cargoCapacity;
+  String? get cargo_capacity;
   @override
   String? get consumables;
   @override
-  String? get hyperdriveRating;
+  String? get hyperdrive_rating;
   @override
   String? get MGLT;
   @override
-  String? get starshipClass;
+  String? get starship_class;
   @override
   List<String>? get pilots;
   @override

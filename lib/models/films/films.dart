@@ -8,11 +8,11 @@ part 'films.freezed.dart';
 part 'films.g.dart';
 
 @freezed
-abstract class Films with _$Films {
+class Films with _$Films {
   const factory Films({
     int? count,
-    dynamic? next,
-    dynamic? previous,
+    dynamic next,
+    dynamic previous,
     List<FilmResults>? results,
   }) = _Films;
 
@@ -20,14 +20,14 @@ abstract class Films with _$Films {
 }
 
 @freezed
-abstract class FilmResults with _$FilmResults {
+class FilmResults with _$FilmResults {
   const factory FilmResults({
     String? title,
-    int? episodeId,
-    String? openingCrawl,
+    int? episode_id,
+    String? opening_crawl,
     String? director,
     String? producer,
-    String? releaseDate,
+    String? release_date,
     List<String>? characters,
     List<String>? planets,
     List<String>? starships,

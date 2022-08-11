@@ -4,6 +4,10 @@ import 'package:swapi_flutter/models/home/home.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
 import 'package:swapi_flutter/views/films/films_view.dart';
 import 'package:swapi_flutter/views/people/peoples_view.dart';
+import 'package:swapi_flutter/views/planets/planets_view.dart';
+import 'package:swapi_flutter/views/species/species_view.dart';
+import 'package:swapi_flutter/views/starships/starships_view.dart';
+import 'package:swapi_flutter/views/vehicles/vehicles_view.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({Key? key}) : super(key: key);
@@ -63,7 +67,7 @@ class _HomePageViewState extends State<HomePageView> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const PeoplesView(),
+                                builder: (context) => const PlanetsView(),
                               ),
                             );
                           }, 'https://starwars-visualguide.com/assets/img/categories/planets.jpg'),
@@ -71,7 +75,7 @@ class _HomePageViewState extends State<HomePageView> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const PeoplesView(),
+                                builder: (context) => const StarShipsView(),
                               ),
                             );
                           }, 'https://starwars-visualguide.com/assets/img/categories/starships.jpg'),
@@ -79,7 +83,7 @@ class _HomePageViewState extends State<HomePageView> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const PeoplesView(),
+                                builder: (context) => const VehiclesView(),
                               ),
                             );
                           }, 'https://starwars-visualguide.com/assets/img/categories/vehicles.jpg'),
@@ -87,7 +91,7 @@ class _HomePageViewState extends State<HomePageView> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const PeoplesView(),
+                                builder: (context) => const SpeciesView(),
                               ),
                             );
                           }, 'https://starwars-visualguide.com/assets/img/categories/species.jpg'),

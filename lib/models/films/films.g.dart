@@ -25,11 +25,11 @@ Map<String, dynamic> _$$_FilmsToJson(_$_Films instance) => <String, dynamic>{
 _$_FilmResults _$$_FilmResultsFromJson(Map<String, dynamic> json) =>
     _$_FilmResults(
       title: json['title'] as String?,
-      episodeId: json['episodeId'] as int?,
-      openingCrawl: json['openingCrawl'] as String?,
+      episode_id: json['episode_id'] as int?,
+      opening_crawl: json['opening_crawl'] as String?,
       director: json['director'] as String?,
       producer: json['producer'] as String?,
-      releaseDate: json['releaseDate'] as String?,
+      release_date: json['release_date'] as String?,
       characters: (json['characters'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -51,11 +51,11 @@ _$_FilmResults _$$_FilmResultsFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_FilmResultsToJson(_$_FilmResults instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'episodeId': instance.episodeId,
-      'openingCrawl': instance.openingCrawl,
+      'episode_id': instance.episode_id,
+      'opening_crawl': instance.opening_crawl,
       'director': instance.director,
       'producer': instance.producer,
-      'releaseDate': instance.releaseDate,
+      'release_date': instance.release_date,
       'characters': instance.characters,
       'planets': instance.planets,
       'starships': instance.starships,

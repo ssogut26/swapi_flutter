@@ -226,8 +226,8 @@ mixin _$PeopleResults {
   String? get height => throw _privateConstructorUsedError;
   String? get mass => throw _privateConstructorUsedError;
   String? get hair_color => throw _privateConstructorUsedError;
-  String? get skinColor => throw _privateConstructorUsedError;
-  String? get eyeColor => throw _privateConstructorUsedError;
+  String? get skin_color => throw _privateConstructorUsedError;
+  String? get eye_color => throw _privateConstructorUsedError;
   String? get birth_year => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get homeworld => throw _privateConstructorUsedError;
@@ -255,8 +255,8 @@ abstract class $PeopleResultsCopyWith<$Res> {
       String? height,
       String? mass,
       String? hair_color,
-      String? skinColor,
-      String? eyeColor,
+      String? skin_color,
+      String? eye_color,
       String? birth_year,
       String? gender,
       String? homeworld,
@@ -284,8 +284,8 @@ class _$PeopleResultsCopyWithImpl<$Res>
     Object? height = freezed,
     Object? mass = freezed,
     Object? hair_color = freezed,
-    Object? skinColor = freezed,
-    Object? eyeColor = freezed,
+    Object? skin_color = freezed,
+    Object? eye_color = freezed,
     Object? birth_year = freezed,
     Object? gender = freezed,
     Object? homeworld = freezed,
@@ -314,13 +314,13 @@ class _$PeopleResultsCopyWithImpl<$Res>
           ? _value.hair_color
           : hair_color // ignore: cast_nullable_to_non_nullable
               as String?,
-      skinColor: skinColor == freezed
-          ? _value.skinColor
-          : skinColor // ignore: cast_nullable_to_non_nullable
+      skin_color: skin_color == freezed
+          ? _value.skin_color
+          : skin_color // ignore: cast_nullable_to_non_nullable
               as String?,
-      eyeColor: eyeColor == freezed
-          ? _value.eyeColor
-          : eyeColor // ignore: cast_nullable_to_non_nullable
+      eye_color: eye_color == freezed
+          ? _value.eye_color
+          : eye_color // ignore: cast_nullable_to_non_nullable
               as String?,
       birth_year: birth_year == freezed
           ? _value.birth_year
@@ -378,8 +378,8 @@ abstract class _$$_PeopleResultsCopyWith<$Res>
       String? height,
       String? mass,
       String? hair_color,
-      String? skinColor,
-      String? eyeColor,
+      String? skin_color,
+      String? eye_color,
       String? birth_year,
       String? gender,
       String? homeworld,
@@ -409,8 +409,8 @@ class __$$_PeopleResultsCopyWithImpl<$Res>
     Object? height = freezed,
     Object? mass = freezed,
     Object? hair_color = freezed,
-    Object? skinColor = freezed,
-    Object? eyeColor = freezed,
+    Object? skin_color = freezed,
+    Object? eye_color = freezed,
     Object? birth_year = freezed,
     Object? gender = freezed,
     Object? homeworld = freezed,
@@ -439,13 +439,13 @@ class __$$_PeopleResultsCopyWithImpl<$Res>
           ? _value.hair_color
           : hair_color // ignore: cast_nullable_to_non_nullable
               as String?,
-      skinColor: skinColor == freezed
-          ? _value.skinColor
-          : skinColor // ignore: cast_nullable_to_non_nullable
+      skin_color: skin_color == freezed
+          ? _value.skin_color
+          : skin_color // ignore: cast_nullable_to_non_nullable
               as String?,
-      eyeColor: eyeColor == freezed
-          ? _value.eyeColor
-          : eyeColor // ignore: cast_nullable_to_non_nullable
+      eye_color: eye_color == freezed
+          ? _value.eye_color
+          : eye_color // ignore: cast_nullable_to_non_nullable
               as String?,
       birth_year: birth_year == freezed
           ? _value.birth_year
@@ -499,8 +499,8 @@ class _$_PeopleResults implements _PeopleResults {
       this.height,
       this.mass,
       this.hair_color,
-      this.skinColor,
-      this.eyeColor,
+      this.skin_color,
+      this.eye_color,
       this.birth_year,
       this.gender,
       this.homeworld,
@@ -528,9 +528,9 @@ class _$_PeopleResults implements _PeopleResults {
   @override
   final String? hair_color;
   @override
-  final String? skinColor;
+  final String? skin_color;
   @override
-  final String? eyeColor;
+  final String? eye_color;
   @override
   final String? birth_year;
   @override
@@ -582,7 +582,7 @@ class _$_PeopleResults implements _PeopleResults {
 
   @override
   String toString() {
-    return 'PeopleResults(name: $name, height: $height, mass: $mass, hair_color: $hair_color, skinColor: $skinColor, eyeColor: $eyeColor, birth_year: $birth_year, gender: $gender, homeworld: $homeworld, films: $films, species: $species, vehicles: $vehicles, starships: $starships, created: $created, edited: $edited, url: $url)';
+    return 'PeopleResults(name: $name, height: $height, mass: $mass, hair_color: $hair_color, skin_color: $skin_color, eye_color: $eye_color, birth_year: $birth_year, gender: $gender, homeworld: $homeworld, films: $films, species: $species, vehicles: $vehicles, starships: $starships, created: $created, edited: $edited, url: $url)';
   }
 
   @override
@@ -595,8 +595,9 @@ class _$_PeopleResults implements _PeopleResults {
             const DeepCollectionEquality().equals(other.mass, mass) &&
             const DeepCollectionEquality()
                 .equals(other.hair_color, hair_color) &&
-            const DeepCollectionEquality().equals(other.skinColor, skinColor) &&
-            const DeepCollectionEquality().equals(other.eyeColor, eyeColor) &&
+            const DeepCollectionEquality()
+                .equals(other.skin_color, skin_color) &&
+            const DeepCollectionEquality().equals(other.eye_color, eye_color) &&
             const DeepCollectionEquality()
                 .equals(other.birth_year, birth_year) &&
             const DeepCollectionEquality().equals(other.gender, gender) &&
@@ -619,8 +620,8 @@ class _$_PeopleResults implements _PeopleResults {
       const DeepCollectionEquality().hash(height),
       const DeepCollectionEquality().hash(mass),
       const DeepCollectionEquality().hash(hair_color),
-      const DeepCollectionEquality().hash(skinColor),
-      const DeepCollectionEquality().hash(eyeColor),
+      const DeepCollectionEquality().hash(skin_color),
+      const DeepCollectionEquality().hash(eye_color),
       const DeepCollectionEquality().hash(birth_year),
       const DeepCollectionEquality().hash(gender),
       const DeepCollectionEquality().hash(homeworld),
@@ -651,8 +652,8 @@ abstract class _PeopleResults implements PeopleResults {
       final String? height,
       final String? mass,
       final String? hair_color,
-      final String? skinColor,
-      final String? eyeColor,
+      final String? skin_color,
+      final String? eye_color,
       final String? birth_year,
       final String? gender,
       final String? homeworld,
@@ -676,9 +677,9 @@ abstract class _PeopleResults implements PeopleResults {
   @override
   String? get hair_color;
   @override
-  String? get skinColor;
+  String? get skin_color;
   @override
-  String? get eyeColor;
+  String? get eye_color;
   @override
   String? get birth_year;
   @override

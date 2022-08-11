@@ -25,15 +25,15 @@ class FilmManager {
     return null;
   }
 
-  // Future<FilmResults?> fetchFilm(int index) async {
-  //   var uri = Uri.parse('films/${index}');
-  //   var response = await NetworkManager.instance._dio.get(
-  //     '$uri',
-  //   );
-  //   if (response.statusCode == 200) {
-  //     return FilmResults.fromJson(response.data);
-  //   }
+  Future<FilmResults?> fetchFilm(int index) async {
+    var uri = Uri.parse('films/$index');
+    var response = await NetworkManager.instance._dio.get(
+      '$uri',
+    );
+    if (response.statusCode == 200) {
+      return FilmResults.fromJson(response.data);
+    }
 
-  //   return null;
-  // }
+    return null;
+  }
 }
