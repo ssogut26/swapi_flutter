@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/starships/starships.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
+import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
 import 'package:swapi_flutter/views/starships/starship_view.dart';
 
@@ -14,13 +16,10 @@ class StarShipsView extends StatefulWidget {
 class _StarShipsViewState extends State<StarShipsView> {
   final _api = NetworkManager.instance;
   late Future<List<StarShipResults>?> starShips;
-  // late Future<PlanetResults?> planet;
-  int index = 0;
 
   @override
   void initState() {
     starShips = _api.fetchStarships();
-    // film = _api.fetchFilm(index);
     super.initState();
   }
 
@@ -38,28 +37,30 @@ class _StarShipsViewState extends State<StarShipsView> {
             itemBuilder: (context, index) {
               var main = snapshot.data?[index];
               String name = main?.name ?? '';
-              var errorUrl =
-                  'https://starwars-visualguide.com/assets/img/placeholder.jpg';
-              var imageUrl = 'assets/images/starships/${index + 1}.jpg';
-              var image = FadeInImage(
-                placeholder: NetworkImage(errorUrl),
-                placeholderErrorBuilder: (context, error, _) => Image.network(errorUrl),
-                image: Image.asset(imageUrl).image,
-              );
+              var url = snapshot.data?[index].url?.substring(32) ?? '';
+              index = int.parse(url.split('/')[0]);
+              String errorUrl = ConstantTexts().errorUrl;
+              String imageUrl = '${ConstantTexts().starShipBaseUrl}index.jpg';
+              CachedNetworkImage image = Methods().cachedImage(errorUrl, imageUrl);
               return GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return StarShipResultsView(
-                      index: index,
-                      image: image,
-                    );
-                  }));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return StarShipResultsView(
+                          index: index,
+                          image: image,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Card(
                   clipBehavior: Clip.antiAlias,
                   child: Row(
                     children: [
-                      Methods().fadeInPhotoBox(image),
+                      Methods().cachedPhotoBox(image),
                       Text(name),
                       const Divider(
                         height: 5,

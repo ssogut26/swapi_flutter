@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/home/home.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
+import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/views/films/films_view.dart';
 import 'package:swapi_flutter/views/people/peoples_view.dart';
 import 'package:swapi_flutter/views/planets/planets_view.dart';
@@ -54,7 +55,7 @@ class _HomePageViewState extends State<HomePageView> {
                                 builder: (context) => const FilmsView(),
                               ),
                             );
-                          }, 'https://starwars-visualguide.com/assets/img/categories/films.jpg'),
+                          }, '${ConstantTexts().categoryBaseUrl}films.jpg'),
                           routeWithImage(context, snapshot, 'Characters', () {
                             Navigator.push(
                               context,
@@ -62,7 +63,7 @@ class _HomePageViewState extends State<HomePageView> {
                                 builder: (context) => const PeoplesView(),
                               ),
                             );
-                          }, 'https://starwars-visualguide.com/assets/img/categories/character.jpg'),
+                          }, '${ConstantTexts().categoryBaseUrl}character.jpg'),
                           routeWithImage(context, snapshot, 'Planets', () {
                             Navigator.push(
                               context,
@@ -70,7 +71,7 @@ class _HomePageViewState extends State<HomePageView> {
                                 builder: (context) => const PlanetsView(),
                               ),
                             );
-                          }, 'https://starwars-visualguide.com/assets/img/categories/planets.jpg'),
+                          }, '${ConstantTexts().categoryBaseUrl}planets.jpg'),
                           routeWithImage(context, snapshot, 'Star Ships', () {
                             Navigator.push(
                               context,
@@ -78,7 +79,7 @@ class _HomePageViewState extends State<HomePageView> {
                                 builder: (context) => const StarShipsView(),
                               ),
                             );
-                          }, 'https://starwars-visualguide.com/assets/img/categories/starships.jpg'),
+                          }, '${ConstantTexts().categoryBaseUrl}starships.jpg'),
                           routeWithImage(context, snapshot, 'Vehicles', () {
                             Navigator.push(
                               context,
@@ -86,7 +87,7 @@ class _HomePageViewState extends State<HomePageView> {
                                 builder: (context) => const VehiclesView(),
                               ),
                             );
-                          }, 'https://starwars-visualguide.com/assets/img/categories/vehicles.jpg'),
+                          }, '${ConstantTexts().categoryBaseUrl}vehicles.jpg'),
                           routeWithImage(context, snapshot, 'Species', () {
                             Navigator.push(
                               context,
@@ -94,16 +95,17 @@ class _HomePageViewState extends State<HomePageView> {
                                 builder: (context) => const SpeciesView(),
                               ),
                             );
-                          }, 'https://starwars-visualguide.com/assets/img/categories/species.jpg'),
+                          }, '${ConstantTexts().categoryBaseUrl}species.jpg'),
                         ],
                       ),
                     );
                   },
                 ),
               );
-            } else {
+            } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
+            return const Center(child: CircularProgressIndicator());
           }),
     );
   }

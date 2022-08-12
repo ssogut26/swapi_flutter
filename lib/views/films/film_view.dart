@@ -42,35 +42,41 @@ class _FilmResultsViewState extends State<FilmResultsView> {
       body: FutureBuilder<FilmResults?>(
         future: film,
         builder: (context, snapshot) {
-          String title = snapshot.data?.title ?? '';
-          String director = snapshot.data?.director ?? '';
-          String producer = snapshot.data?.producer ?? '';
-          String releaseDate = snapshot.data?.release_date ?? '';
-          String openingCrawl = snapshot.data?.opening_crawl ?? '';
-          Object episodeId = snapshot.data?.episode_id ?? '';
-          Object characters = snapshot.data?.characters ?? '';
-          Object planets = snapshot.data?.planets ?? '';
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+          var main = snapshot.data;
+          String title = main?.title ?? '';
+          String director = main?.director ?? '';
+          String producer = main?.producer ?? '';
+          String releaseDate = main?.release_date ?? '';
+          String openingCrawl = main?.opening_crawl ?? '';
+          Object episodeId = main?.episode_id ?? '';
+          Object characters = main?.characters ?? '';
+          Object planets = main?.planets ?? '';
+          if (snapshot.hasData) {
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Methods().cachedResultImageBox(context, image),
-                Text('Release Date: $releaseDate'),
-                Text('Opening Crawl: \n$openingCrawl'),
-                Text('Director: $director'),
-                Text('Producer: $producer'),
-                Text('EpisodeId: $episodeId'),
-                // Text('Characters: $characters'),
-                // Text('Planets: $planets'),
-              ],
-            ),
-          );
+                  Methods().cachedResultImageBox(context, image),
+                  Text('Release Date: $releaseDate'),
+                  Text('Opening Crawl: \n$openingCrawl'),
+                  Text('Director: $director'),
+                  Text('Producer: $producer'),
+                  Text('EpisodeId: $episodeId'),
+                  // Text('Characters: $characters'),
+                  // Text('Planets: $planets'),
+                ],
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );

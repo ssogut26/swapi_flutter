@@ -16,9 +16,8 @@ class StarShipManager {
           tempList =
               result.results!.asMap().entries.map((e) => result.results![e.key]).toList();
           tempList2.addAll(tempList);
-          tempList2.cast().getRange(1, 10);
         }
-      } while (response.data['next'] != null && page <= 9);
+      } while (response.data['next'] != null && page <= 4);
       return tempList2;
     } catch (e) {
       print(e);
@@ -27,11 +26,17 @@ class StarShipManager {
   }
 
   Future<StarShipResults?> fetchStarShip(int index) async {
-    var uri = Uri.parse('starships/${index + 1}');
+    var uri = Uri.parse('starships/$index');
     var response = await NetworkManager.instance._dio.get(
       '$uri',
     );
-    if (response.statusCode == 200) {
+    var a = (response.data['url'] as String).substring(32);
+    index = int.parse(a.split('/')[0]);
+    var newUri = Uri.parse('starships/$index');
+    var response2 = await NetworkManager.instance._dio.get(
+      '$newUri',
+    );
+    if (response2.statusCode == 200) {
       return StarShipResults.fromJson(response.data);
     }
 

@@ -50,33 +50,37 @@ class _PlanetResultsViewState extends State<PlanetResultsView> {
           Object surfaceWater = snapshot.data?.surface_water ?? '';
           Object rotationPeriod = snapshot.data?.rotation_period ?? '';
           Object terrain = snapshot.data?.terrain ?? '';
-
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+          if (snapshot.hasData) {
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  width: MediaQuery.of(context).size.width,
-                  child: image,
-                ),
-                Text('Diameter: $diameter'),
-                Text('Population: $population'),
-                Text('Climate: $climate'),
-                Text('Terrain: $terrain'),
-                Text('Gravity: $gravity'),
-                Text('Surface Water: $surfaceWater'),
-                Text('Rotation Period: $rotationPeriod'),
-                Text('Orbital Period: $orbitalPeriod'),
-              ],
-            ),
-          );
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    width: MediaQuery.of(context).size.width,
+                    child: image,
+                  ),
+                  Text('Diameter: $diameter'),
+                  Text('Population: $population'),
+                  Text('Climate: $climate'),
+                  Text('Terrain: $terrain'),
+                  Text('Gravity: $gravity'),
+                  Text('Surface Water: $surfaceWater'),
+                  Text('Rotation Period: $rotationPeriod'),
+                  Text('Orbital Period: $orbitalPeriod'),
+                ],
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );

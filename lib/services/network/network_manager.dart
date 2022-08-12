@@ -36,7 +36,7 @@ class NetworkManager {
   fetchPlanets() => PlanetManager().fetchPlanets();
   fetchPlanet(index) => PlanetManager().fetchPlanet(index);
   fetchVehicles() => VehicleManager().fetchVehicles();
-  fetchVehicle(index) => VehicleManager().fetchVehicle();
+  fetchVehicle(index) => VehicleManager().fetchVehicle(index);
   fetchStarships() => StarShipManager().fetchStarShips();
   fetchStarship(index) => StarShipManager().fetchStarShip(index);
   fetchAllSpecies() => SpeciesManager().fetchAllSpecies();

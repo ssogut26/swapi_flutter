@@ -16,7 +16,6 @@ class PeopleManager {
           tempList =
               result.results!.asMap().entries.map((e) => result.results![e.key]).toList();
           tempList2.addAll(tempList);
-          tempList2.cast().getRange(1, 10);
         }
       } while (response.data['next'] != null && page <= 9);
       return tempList2;
@@ -27,11 +26,18 @@ class PeopleManager {
   }
 
   Future<PeopleResults?> fetchPerson(int index) async {
-    var uri = Uri.parse('people/${index + 1}');
+    var uri = Uri.parse('people/$index');
     var response = await NetworkManager.instance._dio.get(
       '$uri',
     );
-    if (response.statusCode == 200) {
+    var a = (response.data['url'] as String).substring(29);
+    index = int.parse(a.split('/')[0]);
+    print(index);
+    var newUri = Uri.parse('people/$index');
+    var response2 = await NetworkManager.instance._dio.get(
+      '$newUri',
+    );
+    if (response2.statusCode == 200) {
       return PeopleResults.fromJson(response.data);
     }
 

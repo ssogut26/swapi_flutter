@@ -4,21 +4,10 @@ class FilmManager {
   Future<List<FilmResults>?> fetchFilms() async {
     try {
       var response = await NetworkManager.instance._dio.get('films');
-      int page = 0;
-      List<FilmResults> tempList = [];
-      List<FilmResults> tempList2 = [];
-      do {
-        page++;
-        response =
-            await NetworkManager.instance._dio.getUri(Uri.parse('films/?page=$page'));
-        if (response.statusCode == 200) {
-          Films result = Films.fromJson(response.data);
-          tempList =
-              result.results!.asMap().entries.map((e) => result.results![e.key]).toList();
-          tempList2.addAll(tempList);
-        }
-      } while (response.data['next'] != null && page <= 6);
-      return tempList2;
+
+      if (response.statusCode == 200) {
+        return Films.fromJson(response.data).results;
+      }
     } catch (e) {
       print(e);
     }

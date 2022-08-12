@@ -27,8 +27,8 @@ class SpeciesManager {
   }
 
   Future<SpeciesResult?> fetchSpecies(int index) async {
-    var uri = Uri.parse('species/${index + 1}');
-    var response = await NetworkManager.instance._dio.get(
+    Uri uri = Uri.parse('species/${index + 1}');
+    Response<dynamic> response = await NetworkManager.instance._dio.get(
       '$uri',
     );
     if (response.statusCode == 200) {

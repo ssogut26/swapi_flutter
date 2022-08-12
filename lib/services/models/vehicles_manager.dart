@@ -26,12 +26,18 @@ class VehicleManager {
     return null;
   }
 
-  Future<VehicleResult?> fetchVehicle({int index = 4}) async {
-    var uri = Uri.parse('vehicles/${index + 1}');
+  Future<VehicleResult?> fetchVehicle(int index) async {
+    var uri = Uri.parse('vehicles/$index');
     var response = await NetworkManager.instance._dio.get(
       '$uri',
     );
-    if (response.statusCode == 200) {
+    var a = (response.data['url'] as String).substring(31);
+    index = int.parse(a.split('/')[0]);
+    var newUri = Uri.parse('vehicles/$index');
+    var response2 = await NetworkManager.instance._dio.get(
+      '$newUri',
+    );
+    if (response2.statusCode == 200) {
       return VehicleResult.fromJson(response.data);
     }
 

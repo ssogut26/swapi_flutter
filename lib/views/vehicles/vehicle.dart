@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/vehicles/vehicles.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
@@ -5,7 +6,7 @@ import 'package:swapi_flutter/utils/reusableMethods.dart';
 
 class VehicleResultsView extends StatefulWidget {
   final int index;
-  final FadeInImage image;
+  final CachedNetworkImage image;
   const VehicleResultsView({
     required this.index,
     required this.image,
@@ -22,7 +23,7 @@ class VehicleResultsView extends StatefulWidget {
 class _VehicleResultsViewState extends State<VehicleResultsView> {
   final NetworkManager _apiService = NetworkManager.instance;
   late Future<VehicleResult?> vehicle;
-  late FadeInImage image;
+  late CachedNetworkImage image;
 
   @override
   void initState() {
@@ -41,9 +42,7 @@ class _VehicleResultsViewState extends State<VehicleResultsView> {
         builder: (context, snapshot) {
           String name = snapshot.data?.name ?? '';
           String model = snapshot.data?.model ?? '';
-
           String cargoCap = snapshot.data?.cargo_capacity ?? '';
-
           String lenght = snapshot.data?.length ?? '';
           String consumables = snapshot.data?.consumables ?? '';
           String manufacturer = snapshot.data?.manufacturer ?? '';
@@ -62,7 +61,7 @@ class _VehicleResultsViewState extends State<VehicleResultsView> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Methods().fadeInResultImageBox(context, image),
+                Methods().cachedResultImageBox(context, image),
                 Text('Model: $model'),
                 Text('Cargo Capacity: $cargoCap'),
                 Text('Lenght: $lenght'),

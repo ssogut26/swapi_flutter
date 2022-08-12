@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/species/species.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
+import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
 import 'package:swapi_flutter/views/species/species_result_view.dart';
 
@@ -15,13 +16,10 @@ class SpeciesView extends StatefulWidget {
 class _SpeciesViewState extends State<SpeciesView> {
   final _api = NetworkManager.instance;
   late Future<List<SpeciesResult>?> species;
-  // late Future<SpeciesResults?> specie;
-  int index = 0;
 
   @override
   void initState() {
     species = _api.fetchAllSpecies();
-    // film = _api.fetchFilm(index);
     super.initState();
   }
 
@@ -39,18 +37,9 @@ class _SpeciesViewState extends State<SpeciesView> {
             itemBuilder: (context, index) {
               var main = snapshot.data?[index];
               String name = main?.name ?? '';
-              var errorUrl =
-                  'https://starwars-visualguide.com/assets/img/placeholder.jpg';
-              var imageUrl =
-                  'https://starwars-visualguide.com/assets/img/species/${index + 1}.jpg';
-              var image = CachedNetworkImage(
-                imageUrl: imageUrl,
-                placeholder: (context, url) =>
-                    const Center(child: CircularProgressIndicator()),
-                errorWidget: (context, url, error) {
-                  return Image.network(errorUrl);
-                },
-              );
+              var errorUrl = ConstantTexts().errorUrl;
+              var imageUrl = '${ConstantTexts().speciesBaseUrl}${index + 1}.jpg';
+              CachedNetworkImage image = Methods().cachedImage(imageUrl, errorUrl);
               return GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {

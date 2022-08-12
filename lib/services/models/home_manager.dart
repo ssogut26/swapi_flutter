@@ -5,7 +5,6 @@ class HomePageManager {
     try {
       var response = await NetworkManager.instance._dio.get('/');
       if (response.statusCode == 200) {
-        print(response.data);
         return Home.fromJson(response.data);
       }
     } catch (e) {

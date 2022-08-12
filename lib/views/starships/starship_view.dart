@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/starships/starships.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
@@ -5,7 +6,7 @@ import 'package:swapi_flutter/utils/reusableMethods.dart';
 
 class StarShipResultsView extends StatefulWidget {
   final int index;
-  final FadeInImage image;
+  final CachedNetworkImage image;
   const StarShipResultsView({
     required this.index,
     required this.image,
@@ -22,7 +23,7 @@ class StarShipResultsView extends StatefulWidget {
 class _StarShipResultsViewState extends State<StarShipResultsView> {
   final NetworkManager _apiService = NetworkManager.instance;
   late Future<StarShipResults?> starShip;
-  late FadeInImage image;
+  late CachedNetworkImage image;
 
   @override
   void initState() {
@@ -61,7 +62,7 @@ class _StarShipResultsViewState extends State<StarShipResultsView> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Methods().fadeInResultImageBox(context, image),
+                Methods().cachedResultImageBox(context, image),
                 Text('Model: $model'),
                 Text('MGLT: $MGLT'),
                 Text('Cargo Capacity: $cargoCap'),

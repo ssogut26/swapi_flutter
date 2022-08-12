@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/vehicles/vehicles.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
+import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
 import 'package:swapi_flutter/views/vehicles/vehicle.dart';
 
@@ -33,42 +35,45 @@ class _VehiclesViewState extends State<VehiclesView> {
       body: FutureBuilder<List<VehicleResult>?>(
         future: vehicles,
         builder: ((context, snapshot) {
-          return ListView.builder(
-            itemCount: snapshot.data?.length ?? 0,
-            itemBuilder: (context, index) {
-              var main = snapshot.data?[index];
-              String name = main?.name ?? '';
-              var errorUrl =
-                  'https://starwars-visualguide.com/assets/img/placeholder.jpg';
-              var imageUrl = 'assets/images/vehicles/${index + 1}.jpg';
-              var image = FadeInImage(
-                placeholder: AssetImage(errorUrl),
-                image: Image.asset(imageUrl).image,
-              );
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return VehicleResultsView(
-                      index: index,
-                      image: image,
-                    );
-                  }));
-                },
-                child: Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: Row(
-                    children: [
-                      Methods().fadeInPhotoBox(image),
-                      Text(name),
-                      const Divider(
-                        height: 5,
-                      ),
-                    ],
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data?.length ?? 0,
+              itemBuilder: (context, index) {
+                var main = snapshot.data?[index];
+                String name = main?.name ?? '';
+                var url = snapshot.data?[index].url?.substring(31) ?? '';
+                index = int.parse(url.split('/')[0]);
+                String errorUrl = ConstantTexts().errorUrl;
+                String imageUrl = '${ConstantTexts().vehicleBaseUrl}$index.jpg';
+                CachedNetworkImage image = Methods().cachedImage(errorUrl, imageUrl);
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return VehicleResultsView(
+                        index: index,
+                        image: image,
+                      );
+                    }));
+                  },
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: Row(
+                      children: [
+                        Methods().cachedPhotoBox(image),
+                        Text(name),
+                        const Divider(
+                          height: 5,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
-          );
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return const Center(child: CircularProgressIndicator());
         }),
       ),
     );

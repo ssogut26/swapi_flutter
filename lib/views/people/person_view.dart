@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/peoples/peoples.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
+import 'package:swapi_flutter/utils/reusableMethods.dart';
 
 class PeopleResultsView extends StatefulWidget {
   final int index;
@@ -23,7 +24,6 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
   final NetworkManager _apiService = NetworkManager.instance;
   late Future<PeopleResults?> people;
   late CachedNetworkImage image;
-  final uri = 'https://swapi.dev/api/planets/1/';
   @override
   void initState() {
     people = _apiService.fetchPerson(widget.index);
@@ -46,36 +46,29 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
           String hairColor = snapshot.data?.hair_color ?? '';
           String skinColor = snapshot.data?.skin_color ?? '';
           String homeWorld = (snapshot.data?.homeworld ?? '');
-
-          return Column(
-            children: [
-              image,
-              Text(name),
-              Text(birthYear),
-              Text(height),
-              Text(mass),
-              Text(gender),
-              Text(hairColor),
-              Text(skinColor),
-              TextButton(
-                onPressed: () {},
-                child: Text(homeWorld),
-              ),
-            ],
-          );
+          if (snapshot.hasData) {
+            return Column(
+              children: [
+                Text(name),
+                Methods().cachedResultImageBox(context, image),
+                Text(birthYear),
+                Text(height),
+                Text(mass),
+                Text(gender),
+                Text(hairColor),
+                Text(skinColor),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(homeWorld),
+                ),
+              ],
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );
-  }
-
-  Future fetchAlbumDetailData(uri) async {
-    print(Uri.parse(uri));
-    // Print out: https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=755bf5e882b716dac814852b5e8e2e52&artist=Weezer&album=Make%20Believe&format=json
-    final result = await _apiService.service
-        .getUri(Uri.parse(uri))
-        .timeout(const Duration(seconds: 5));
-    print(result.data['name']);
-
-    return (result.data['name']);
   }
 }

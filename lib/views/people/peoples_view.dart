@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/peoples/peoples.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
+import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
 import 'package:swapi_flutter/views/people/person_view.dart';
 
@@ -15,13 +16,11 @@ class PeoplesView extends StatefulWidget {
 class _PeoplesViewState extends State<PeoplesView> {
   final _api = NetworkManager.instance;
   late Future<List<PeopleResults>?> peoples;
-  late Future<PeopleResults?> person;
   int index = 0;
 
   @override
   void initState() {
     peoples = _api.fetchPeople();
-    person = _api.fetchPerson(index);
     super.initState();
   }
 
@@ -35,7 +34,7 @@ class _PeoplesViewState extends State<PeoplesView> {
     );
   }
 
-  FutureBuilder fetchPeople() {
+  FutureBuilder<List<PeopleResults>?> fetchPeople() {
     return FutureBuilder<List<PeopleResults>?>(
       future: peoples,
       builder: (context, snapshot) {
@@ -46,6 +45,8 @@ class _PeoplesViewState extends State<PeoplesView> {
             child: ListView.builder(
               itemCount: snapshot.data?.length ?? 0,
               itemBuilder: (context, index) {
+                var url = snapshot.data?[index].url?.substring(29) ?? '';
+                index = int.parse(url.split('/')[0]);
                 return Row(
                   children: [
                     peopleList(context, snapshot),
@@ -62,66 +63,25 @@ class _PeoplesViewState extends State<PeoplesView> {
     );
   }
 
-  SizedBox peopleList(BuildContext context, AsyncSnapshot snapshot) {
+  SizedBox peopleList(
+      BuildContext context, AsyncSnapshot<List<PeopleResults>?> snapshot) {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
-        addSemanticIndexes: true,
         clipBehavior: Clip.antiAlias,
         padding: const EdgeInsets.all(8),
         shrinkWrap: true,
         itemCount: snapshot.data?.length ?? 0,
         itemBuilder: (context, index) {
           var main = snapshot.data?[index];
-          var name = main?.name;
-
-          if (index < 16) {
-            index = index;
-            CachedNetworkImage image = CachedNetworkImage(
-              fit: BoxFit.cover,
-              imageUrl:
-                  'https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg',
-              placeholder: (context, url) => SizedBox(
-                child: Image.asset('assets/images/yoda.gif'),
-              ),
-              errorWidget: (context, url, error) {
-                return const Icon(Icons.error);
-              },
-            );
-            return peopleCard(image, name, index);
-          } else if (index >= 16) {
-            index = index + 1;
-            CachedNetworkImage image = CachedNetworkImage(
-              fit: BoxFit.cover,
-              imageUrl:
-                  'https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg',
-              placeholder: (context, url) => SizedBox(
-                child: Image.asset('assets/images/yoda.gif'),
-              ),
-              errorWidget: (context, url, error) {
-                return const Icon(Icons.error);
-              },
-            );
-            return peopleCard(image, name, index);
-          } else if (index > 17) {
-            CachedNetworkImage image = CachedNetworkImage(
-              fit: BoxFit.cover,
-              imageUrl:
-                  'https://starwars-visualguide.com/assets/img/characters/${index + 2}.jpg',
-              placeholder: (context, url) => SizedBox(
-                child: Image.asset('assets/images/yoda.gif'),
-              ),
-              errorWidget: (context, url, error) {
-                return const Icon(Icons.error);
-              },
-            );
-            return peopleCard(image, name, index);
-          }
+          var name = main?.name ?? '';
+          var url = snapshot.data?[index].url?.substring(29) ?? '';
+          index = int.parse(url.split('/')[0]);
+          var imageUrl = '${ConstantTexts().charactersBaseUrl}$index.jpg';
           CachedNetworkImage image = CachedNetworkImage(
             fit: BoxFit.cover,
-            imageUrl:
-                'https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg',
+            imageUrl: imageUrl,
             placeholder: (context, url) => SizedBox(
               child: Image.asset('assets/images/yoda.gif'),
             ),
