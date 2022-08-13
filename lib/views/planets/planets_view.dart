@@ -40,7 +40,7 @@ class _PlanetsViewState extends State<PlanetsView> {
                 String name = main?.name ?? '';
                 var errorUrl = ConstantTexts().errorUrl;
                 var imageUrl = '${ConstantTexts().planetsBaseUrl}${index + 1}.jpg';
-                CachedNetworkImage image = Methods().cachedImage(errorUrl, imageUrl);
+                CachedNetworkImage image = Methods().cachedImage(imageUrl);
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) {

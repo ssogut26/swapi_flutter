@@ -40,17 +40,18 @@ class _VehicleResultsViewState extends State<VehicleResultsView> {
       body: FutureBuilder<VehicleResult?>(
         future: vehicle,
         builder: (context, snapshot) {
-          String name = snapshot.data?.name ?? '';
-          String model = snapshot.data?.model ?? '';
-          String cargoCap = snapshot.data?.cargo_capacity ?? '';
-          String lenght = snapshot.data?.length ?? '';
-          String consumables = snapshot.data?.consumables ?? '';
-          String manufacturer = snapshot.data?.manufacturer ?? '';
-          String vehicleClass = snapshot.data?.vehicleClass ?? '';
-          String crew = snapshot.data?.crew ?? '';
-          String passengers = snapshot.data?.passengers ?? '';
-          String maxAtmospheringSpeed = snapshot.data?.max_atmosphering_speed ?? '';
-          String costInCredits = snapshot.data?.cost_in_credits ?? '';
+          var main = snapshot.data;
+          String name = main?.name ?? '';
+          String model = main?.model ?? '';
+          String cargoCap = main?.cargo_capacity ?? '';
+          String length = main?.length ?? '';
+          String consumables = main?.consumables ?? '';
+          String manufacturer = main?.manufacturer ?? '';
+          String vehicleClass = main?.vehicleClass ?? '';
+          String crew = main?.crew ?? '';
+          String passengers = main?.passengers ?? '';
+          String maxAtmospheringSpeed = main?.max_atmosphering_speed ?? '';
+          String costInCredits = main?.cost_in_credits ?? '';
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -64,7 +65,7 @@ class _VehicleResultsViewState extends State<VehicleResultsView> {
                 Methods().cachedResultImageBox(context, image),
                 Text('Model: $model'),
                 Text('Cargo Capacity: $cargoCap'),
-                Text('Lenght: $lenght'),
+                Text('Length: $length'),
                 Text('Consumables: $consumables'),
                 Text('Manufacturer: $manufacturer'),
                 Text('Vehicle Class: $vehicleClass'),

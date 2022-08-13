@@ -32,38 +32,46 @@ class _SpeciesViewState extends State<SpeciesView> {
       body: FutureBuilder<List<SpeciesResult>?>(
         future: species,
         builder: ((context, snapshot) {
-          return ListView.builder(
-            itemCount: snapshot.data?.length ?? 0,
-            itemBuilder: (context, index) {
-              var main = snapshot.data?[index];
-              String name = main?.name ?? '';
-              var errorUrl = ConstantTexts().errorUrl;
-              var imageUrl = '${ConstantTexts().speciesBaseUrl}${index + 1}.jpg';
-              CachedNetworkImage image = Methods().cachedImage(imageUrl, errorUrl);
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return SpeciesResultsView(
-                      index: index,
-                      image: image,
-                    );
-                  }));
-                },
-                child: Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: Row(
-                    children: [
-                      Methods().cachedPhotoBox(image),
-                      Text(name),
-                      const Divider(
-                        height: 5,
-                      ),
-                    ],
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data?.length ?? 0,
+              itemBuilder: (context, index) {
+                var main = snapshot.data?[index];
+                String name = main?.name ?? '';
+                var errorUrl = ConstantTexts().errorUrl;
+                var imageUrl = '${ConstantTexts().speciesBaseUrl}${index + 1}.jpg';
+                print(imageUrl);
+                CachedNetworkImage image = Methods().cachedImage(
+                  imageUrl,
+                );
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return SpeciesResultsView(
+                        index: index,
+                        image: image,
+                      );
+                    }));
+                  },
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: Row(
+                      children: [
+                        Methods().cachedPhotoBox(image),
+                        Text(name),
+                        const Divider(
+                          height: 5,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
-          );
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return const Center(child: CircularProgressIndicator());
         }),
       ),
     );

@@ -32,45 +32,52 @@ class _StarShipsViewState extends State<StarShipsView> {
       body: FutureBuilder<List<StarShipResults>?>(
         future: starShips,
         builder: ((context, snapshot) {
-          return ListView.builder(
-            itemCount: snapshot.data?.length ?? 0,
-            itemBuilder: (context, index) {
-              var main = snapshot.data?[index];
-              String name = main?.name ?? '';
-              var url = snapshot.data?[index].url?.substring(32) ?? '';
-              index = int.parse(url.split('/')[0]);
-              String errorUrl = ConstantTexts().errorUrl;
-              String imageUrl = '${ConstantTexts().starShipBaseUrl}index.jpg';
-              CachedNetworkImage image = Methods().cachedImage(errorUrl, imageUrl);
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return StarShipResultsView(
-                          index: index,
-                          image: image,
-                        );
-                      },
-                    ),
-                  );
-                },
-                child: Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: Row(
-                    children: [
-                      Methods().cachedPhotoBox(image),
-                      Text(name),
-                      const Divider(
-                        height: 5,
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data?.length ?? 0,
+              itemBuilder: (context, index) {
+                var main = snapshot.data?[index];
+                String name = main?.name ?? '';
+                var url = snapshot.data?[index].url?.substring(32) ?? '';
+                index = int.parse(url.split('/')[0]);
+                String errorUrl = ConstantTexts().errorUrl;
+                String imageUrl = '${ConstantTexts().starShipBaseUrl}$index.jpg';
+                CachedNetworkImage image = Methods().cachedImage(
+                  imageUrl,
+                );
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return StarShipResultsView(
+                            index: index,
+                            image: image,
+                          );
+                        },
                       ),
-                    ],
+                    );
+                  },
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: Row(
+                      children: [
+                        Methods().cachedPhotoBox(image),
+                        Text(name),
+                        const Divider(
+                          height: 5,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
-          );
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return const Center(child: CircularProgressIndicator());
         }),
       ),
     );

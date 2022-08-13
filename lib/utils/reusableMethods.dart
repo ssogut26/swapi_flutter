@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 
 class Methods {
   SizedBox cachedPhotoBox(CachedNetworkImage? image) {
+    heights() {
+      if (image == null) {
+        image?.height ?? 500 * 0.5;
+      }
+    }
+
     return SizedBox(
-      height: 195,
+      height: heights(),
       width: 148,
       child: image,
     );
@@ -20,8 +26,8 @@ class Methods {
 
   SizedBox cachedResultImageBox(BuildContext context, CachedNetworkImage? image) {
     return SizedBox(
-      height: 488,
-      width: 380,
+      height: MediaQuery.of(context).size.height * 0.4,
+      width: MediaQuery.of(context).size.width,
       child: image,
     );
   }
@@ -34,12 +40,11 @@ class Methods {
     );
   }
 
-  CachedNetworkImage cachedImage(String errorUrl, String imageUrl) {
+  CachedNetworkImage cachedImage(String imageUrl) {
     return CachedNetworkImage(
       placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-      errorWidget: (context, url, error) => Image.network(errorUrl),
+      errorWidget: (context, url, error) => Image.asset('assets/images/placeholder.jpg'),
       imageUrl: imageUrl,
-      fit: BoxFit.scaleDown,
     );
   }
 }

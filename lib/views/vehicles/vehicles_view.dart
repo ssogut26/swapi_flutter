@@ -16,13 +16,11 @@ class VehiclesView extends StatefulWidget {
 class _VehiclesViewState extends State<VehiclesView> {
   final _api = NetworkManager.instance;
   late Future<List<VehicleResult>?> vehicles;
-  // late Future<VehiclesResult?> vehicle;
   int index = 0;
 
   @override
   void initState() {
     vehicles = _api.fetchVehicles();
-    // film = _api.fetchFilm(index);
     super.initState();
   }
 
@@ -45,7 +43,9 @@ class _VehiclesViewState extends State<VehiclesView> {
                 index = int.parse(url.split('/')[0]);
                 String errorUrl = ConstantTexts().errorUrl;
                 String imageUrl = '${ConstantTexts().vehicleBaseUrl}$index.jpg';
-                CachedNetworkImage image = Methods().cachedImage(errorUrl, imageUrl);
+                CachedNetworkImage image = Methods().cachedImage(
+                  imageUrl,
+                );
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
