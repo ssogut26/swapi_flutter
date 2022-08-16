@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/peoples/peoples.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
+import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
+import 'package:swapi_flutter/views/planets/planet_view.dart';
 
 class PeopleResultsView extends StatefulWidget {
   final int index;
@@ -46,22 +48,45 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
           String hairColor = snapshot.data?.hair_color ?? '';
           String skinColor = snapshot.data?.skin_color ?? '';
           String homeWorld = (snapshot.data?.homeworld ?? '');
+          var homeW = snapshot.data?.homeworld;
+          var url = snapshot.data?.homeworld?.substring(30) ?? '';
+          var index = int.parse(url.split('/')[0]);
+          var imageUrl = '${ConstantTexts().planetsBaseUrl}$index.jpg';
+          var planetImage = Methods().cachedImage(imageUrl);
+
           if (snapshot.hasData) {
-            return Column(
-              children: [
-                Text(name),
-                Methods().cachedResultImageBox(context, image),
-                Text(birthYear),
-                Text(height),
-                Text(mass),
-                Text(gender),
-                Text(hairColor),
-                Text(skinColor),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(homeWorld),
-                ),
-              ],
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  Methods().cachedResultImageBox(context, image),
+                  Text('Birth Year: $birthYear'),
+                  Text('Height: $height'),
+                  Text('Mass: $mass'),
+                  Text('Gender: $gender'),
+                  Text('Hair Color: $hairColor'),
+                  Text('Skin Color:' '$skinColor'.toCapitalized()),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return PlanetResultsView(
+                            index: index,
+                            image: planetImage,
+                          );
+                        }));
+                      },
+                      child: Column(
+                        children: [
+                          const Text('Home World:'),
+                          SizedBox(height: 100, width: 100, child: planetImage),
+                        ],
+                      )),
+                ],
+              ),
             );
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
@@ -71,4 +96,13 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
       ),
     );
   }
+}
+
+extension StringCasingExtension on String {
+  String toCapitalized() =>
+      length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
+      .split(' ')
+      .map((str) => str.toCapitalized())
+      .join(' ');
 }
