@@ -9,7 +9,9 @@ class FilmManager {
         return Films.fromJson(response.data).results;
       }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return null;
   }

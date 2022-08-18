@@ -20,7 +20,9 @@ class PeopleManager {
       } while (response.data['next'] != null && page <= 9);
       return tempList2;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return null;
   }
@@ -32,7 +34,7 @@ class PeopleManager {
     );
     var a = (response.data['url'] as String).substring(29);
     index = int.parse(a.split('/')[0]);
-    print(index);
+
     var newUri = Uri.parse('people/$index');
     var response2 = await NetworkManager.instance._dio.get(
       '$newUri',

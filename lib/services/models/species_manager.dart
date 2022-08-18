@@ -21,7 +21,9 @@ class SpeciesManager {
       } while (response.data['next'] != null && page <= 9);
       return tempList2;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return null;
   }

@@ -45,8 +45,6 @@ class _PeoplesViewState extends State<PeoplesView> {
             child: ListView.builder(
               itemCount: snapshot.data?.length ?? 0,
               itemBuilder: (context, index) {
-                var url = snapshot.data?[index].url?.substring(29) ?? '';
-                index = int.parse(url.split('/')[0]);
                 return Row(
                   children: [
                     peopleList(context, snapshot),
@@ -74,21 +72,12 @@ class _PeoplesViewState extends State<PeoplesView> {
         shrinkWrap: true,
         itemCount: snapshot.data?.length ?? 0,
         itemBuilder: (context, index) {
-          var main = snapshot.data?[index];
-          var name = main?.name ?? '';
-          var url = snapshot.data?[index].url?.substring(29) ?? '';
+          PeopleResults? main = snapshot.data?[index];
+          String name = main?.name ?? '';
+          String url = main?.url?.substring(29) ?? '';
           index = int.parse(url.split('/')[0]);
-          var imageUrl = '${ConstantTexts().charactersBaseUrl}$index.jpg';
-          CachedNetworkImage image = CachedNetworkImage(
-            fit: BoxFit.cover,
-            imageUrl: imageUrl,
-            placeholder: (context, url) => SizedBox(
-              child: Image.asset('assets/images/yoda.gif'),
-            ),
-            errorWidget: (context, url, error) {
-              return const Icon(Icons.error);
-            },
-          );
+          String imageUrl = '${ConstantTexts().charactersBaseUrl}$index.jpg';
+          CachedNetworkImage image = Methods().cachedImage(imageUrl);
           return peopleCard(image, name, index);
         },
       ),
@@ -97,8 +86,8 @@ class _PeoplesViewState extends State<PeoplesView> {
 
   GestureDetector peopleCard(CachedNetworkImage image, String? name, index) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
+      onTap: () async {
+        await Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => PeopleResultsView(
@@ -108,26 +97,23 @@ class _PeoplesViewState extends State<PeoplesView> {
           ),
         );
       },
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Card(
-          clipBehavior: Clip.antiAlias,
-          elevation: 3,
-          child: Row(
-            children: [
-              Methods().cachedPhotoBox(image),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '$name',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Methods().cachedPhotoBox(image),
+            Text(
+              '$name',
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
               ),
-            ],
-          ),
+            ),
+            const Divider(
+              height: 5,
+            ),
+          ],
         ),
       ),
     );

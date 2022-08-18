@@ -8,7 +8,9 @@ class HomePageManager {
         return Home.fromJson(response.data);
       }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return null;
   }

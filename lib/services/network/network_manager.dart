@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:swapi_flutter/models/films/films.dart';
 import 'package:swapi_flutter/models/home/home.dart';
 import 'package:swapi_flutter/models/peoples/peoples.dart';

@@ -37,72 +37,90 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: FutureBuilder<PeopleResults?>(
-        future: people,
-        builder: (context, snapshot) {
-          String name = snapshot.data?.name ?? '';
-          String height = snapshot.data?.height ?? '';
-          String birthYear = snapshot.data?.birth_year ?? '';
-          String mass = snapshot.data?.mass ?? '';
-          String gender = snapshot.data?.gender ?? '';
-          String hairColor = snapshot.data?.hair_color ?? '';
-          String skinColor = snapshot.data?.skin_color ?? '';
-          String homeWorld = (snapshot.data?.homeworld ?? '');
-          var homeW = snapshot.data?.homeworld;
-          var url = snapshot.data?.homeworld?.substring(30) ?? '';
-          var index = int.parse(url.split('/')[0]);
-          var imageUrl = '${ConstantTexts().planetsBaseUrl}$index.jpg';
-          var planetImage = Methods().cachedImage(imageUrl);
+      body: getPeopleResult(),
+    );
+  }
 
-          if (snapshot.hasData) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
+  FutureBuilder<PeopleResults?> getPeopleResult() {
+    return FutureBuilder<PeopleResults?>(
+      future: people,
+      builder: (context, snapshot) {
+        String name = snapshot.data?.name ?? '';
+        String height = snapshot.data?.height ?? '';
+        String birthYear = snapshot.data?.birth_year ?? '';
+        String mass = snapshot.data?.mass ?? '';
+        String gender = snapshot.data?.gender ?? '';
+        String hairColor = snapshot.data?.hair_color ?? '';
+        String skinColor = snapshot.data?.skin_color ?? '';
+        String homeWorld = (snapshot.data?.homeworld ?? '');
+        String url = homeWorld.substring(30);
+        int? index = int.tryParse(url.split('/')[0]);
+        String imageUrl = '${ConstantTexts().planetsBaseUrl}$index.jpg';
+        CachedNetworkImage planetImage = Methods().cachedImage(imageUrl);
+        if (snapshot.hasData) {
+          return getPeopleProperty(
+            name,
+            context,
+            birthYear,
+            height,
+            mass,
+            gender,
+            hairColor,
+            skinColor,
+            index,
+            planetImage,
+          );
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+
+  Padding getPeopleProperty(
+      String name,
+      BuildContext context,
+      String birthYear,
+      String height,
+      String mass,
+      String gender,
+      String hairColor,
+      String skinColor,
+      int? index,
+      CachedNetworkImage planetImage) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Text(
+            name,
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          Methods().cachedResultImageBox(context, image),
+          Text('Birth Year: $birthYear'),
+          Text('Height: $height'),
+          Text('Mass: $mass'),
+          Text('Gender: $gender'),
+          Text('Hair Color: $hairColor'),
+          Text('Skin Color:' '$skinColor'),
+          GestureDetector(
+              onTap: () async {
+                await Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return PlanetResultsView(
+                    index: index! - 1,
+                    image: planetImage,
+                  );
+                }));
+              },
               child: Column(
                 children: [
-                  Text(
-                    name,
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  Methods().cachedResultImageBox(context, image),
-                  Text('Birth Year: $birthYear'),
-                  Text('Height: $height'),
-                  Text('Mass: $mass'),
-                  Text('Gender: $gender'),
-                  Text('Hair Color: $hairColor'),
-                  Text('Skin Color:' '$skinColor'.toCapitalized()),
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return PlanetResultsView(
-                            index: index,
-                            image: planetImage,
-                          );
-                        }));
-                      },
-                      child: Column(
-                        children: [
-                          const Text('Home World:'),
-                          SizedBox(height: 100, width: 100, child: planetImage),
-                        ],
-                      )),
+                  const Text('Home World:'),
+                  SizedBox(height: 100, width: 100, child: planetImage),
                 ],
-              ),
-            );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
+              )),
+        ],
       ),
     );
   }
-}
-
-extension StringCasingExtension on String {
-  String toCapitalized() =>
-      length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
-  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
-      .split(' ')
-      .map((str) => str.toCapitalized())
-      .join(' ');
 }

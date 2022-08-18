@@ -41,7 +41,6 @@ class _VehiclesViewState extends State<VehiclesView> {
                 String name = main?.name ?? '';
                 var url = snapshot.data?[index].url?.substring(31) ?? '';
                 index = int.parse(url.split('/')[0]);
-                String errorUrl = ConstantTexts().errorUrl;
                 String imageUrl = '${ConstantTexts().vehicleBaseUrl}$index.jpg';
                 CachedNetworkImage image = Methods().cachedImage(
                   imageUrl,
@@ -58,9 +57,14 @@ class _VehiclesViewState extends State<VehiclesView> {
                   child: Card(
                     clipBehavior: Clip.antiAlias,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Methods().cachedPhotoBox(image),
-                        Text(name),
+                        Text(
+                          name,
+                          style:
+                              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                        ),
                         const Divider(
                           height: 5,
                         ),

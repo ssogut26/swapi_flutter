@@ -29,55 +29,73 @@ class _FilmResultsViewState extends State<FilmResultsView> {
   void initState() {
     film = _apiService.fetchFilm(widget.index);
     image = widget.image;
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          // title: Text(title),
+      appBar: AppBar(),
+      body: getFilmResults(),
+    );
+  }
+
+  FutureBuilder<FilmResults?> getFilmResults() {
+    return FutureBuilder<FilmResults?>(
+      future: film,
+      builder: (context, snapshot) {
+        var main = snapshot.data;
+        String title = main?.title ?? '';
+        String director = main?.director ?? '';
+        String producer = main?.producer ?? '';
+        String releaseDate = main?.release_date ?? '';
+        String openingCrawl = main?.opening_crawl ?? '';
+        Object episodeId = main?.episode_id ?? '';
+        if (snapshot.hasData) {
+          return getFilmProperties(
+            title,
+            context,
+            releaseDate,
+            openingCrawl,
+            director,
+            producer,
+            episodeId,
+          );
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+
+  SingleChildScrollView getFilmProperties(
+      String title,
+      BuildContext context,
+      String releaseDate,
+      String openingCrawl,
+      String director,
+      String producer,
+      Object episodeId) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-      body: FutureBuilder<FilmResults?>(
-        future: film,
-        builder: (context, snapshot) {
-          var main = snapshot.data;
-          String title = main?.title ?? '';
-          String director = main?.director ?? '';
-          String producer = main?.producer ?? '';
-          String releaseDate = main?.release_date ?? '';
-          String openingCrawl = main?.opening_crawl ?? '';
-          Object episodeId = main?.episode_id ?? '';
-          Object characters = main?.characters ?? '';
-          Object planets = main?.planets ?? '';
-          if (snapshot.hasData) {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Methods().cachedResultImageBox(context, image),
-                  Text('Release Date: $releaseDate'),
-                  Text('Opening Crawl: \n$openingCrawl'),
-                  Text('Director: $director'),
-                  Text('Producer: $producer'),
-                  Text('EpisodeId: $episodeId'),
-                  // Text('Characters: $characters'),
-                  // Text('Planets: $planets'),
-                ],
-              ),
-            );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
+          Methods().cachedResultImageBox(context, image),
+          Text('Release Date: $releaseDate'),
+          Text('Opening Crawl: \n$openingCrawl'),
+          Text('Director: $director'),
+          Text('Producer: $producer'),
+          Text('EpisodeId: $episodeId'),
+          // Text('Characters: $characters'),
+          // Text('Planets: $planets'),
+        ],
       ),
     );
   }

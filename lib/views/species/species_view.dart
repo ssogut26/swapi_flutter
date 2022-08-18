@@ -40,7 +40,7 @@ class _SpeciesViewState extends State<SpeciesView> {
                 String name = main?.name ?? '';
                 var errorUrl = ConstantTexts().errorUrl;
                 var imageUrl = '${ConstantTexts().speciesBaseUrl}${index + 1}.jpg';
-                print(imageUrl);
+
                 CachedNetworkImage image = Methods().cachedImage(
                   imageUrl,
                 );
@@ -56,9 +56,14 @@ class _SpeciesViewState extends State<SpeciesView> {
                   child: Card(
                     clipBehavior: Clip.antiAlias,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Methods().cachedPhotoBox(image),
-                        Text(name),
+                        Text(
+                          name,
+                          style:
+                              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                        ),
                         const Divider(
                           height: 5,
                         ),

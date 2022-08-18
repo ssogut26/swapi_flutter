@@ -120,7 +120,7 @@ class _HomePageViewState extends State<HomePageView> {
           text,
           style: const TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
           ),
         ),
         GestureDetector(

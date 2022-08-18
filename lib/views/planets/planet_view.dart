@@ -35,53 +35,80 @@ class _PlanetResultsViewState extends State<PlanetResultsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          // name: Text(name),
+      appBar: AppBar(),
+      body: getPlanetResults(),
+    );
+  }
+
+  FutureBuilder<PlanetResults?> getPlanetResults() {
+    return FutureBuilder<PlanetResults?>(
+      future: planet,
+      builder: (context, snapshot) {
+        String name = snapshot.data?.name ?? '';
+        String climate = snapshot.data?.climate ?? '';
+        String diameter = snapshot.data?.diameter ?? '';
+        String gravity = snapshot.data?.gravity ?? '';
+        String orbitalPeriod = snapshot.data?.orbital_period ?? '';
+        Object population = snapshot.data?.population ?? '';
+        Object surfaceWater = snapshot.data?.surface_water ?? '';
+        Object rotationPeriod = snapshot.data?.rotation_period ?? '';
+        Object terrain = snapshot.data?.terrain ?? '';
+        if (snapshot.hasData) {
+          return planetProperties(
+            name,
+            context,
+            diameter,
+            population,
+            climate,
+            terrain,
+            gravity,
+            surfaceWater,
+            rotationPeriod,
+            orbitalPeriod,
+          );
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+
+  SingleChildScrollView planetProperties(
+      String name,
+      BuildContext context,
+      String diameter,
+      Object population,
+      String climate,
+      Object terrain,
+      String gravity,
+      Object surfaceWater,
+      Object rotationPeriod,
+      String orbitalPeriod) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Text(
+            name,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-      body: FutureBuilder<PlanetResults?>(
-        future: planet,
-        builder: (context, snapshot) {
-          String name = snapshot.data?.name ?? '';
-          String climate = snapshot.data?.climate ?? '';
-          String diameter = snapshot.data?.diameter ?? '';
-          String gravity = snapshot.data?.gravity ?? '';
-          String orbitalPeriod = snapshot.data?.orbital_period ?? '';
-          Object population = snapshot.data?.population ?? '';
-          Object surfaceWater = snapshot.data?.surface_water ?? '';
-          Object rotationPeriod = snapshot.data?.rotation_period ?? '';
-          Object terrain = snapshot.data?.terrain ?? '';
-          if (snapshot.hasData) {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    width: MediaQuery.of(context).size.width,
-                    child: image,
-                  ),
-                  Text('Diameter: $diameter'),
-                  Text('Population: $population'),
-                  Text('Climate: $climate'),
-                  Text('Terrain: $terrain'),
-                  Text('Gravity: $gravity'),
-                  Text('Surface Water: $surfaceWater'),
-                  Text('Rotation Period: $rotationPeriod'),
-                  Text('Orbital Period: $orbitalPeriod'),
-                ],
-              ),
-            );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+            width: MediaQuery.of(context).size.width,
+            child: image,
+          ),
+          Text('Diameter: $diameter'),
+          Text('Population: $population'),
+          Text('Climate: $climate'),
+          Text('Terrain: $terrain'),
+          Text('Gravity: $gravity'),
+          Text('Surface Water: $surfaceWater'),
+          Text('Rotation Period: $rotationPeriod'),
+          Text('Orbital Period: $orbitalPeriod'),
+        ],
       ),
     );
   }

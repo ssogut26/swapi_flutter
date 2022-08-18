@@ -38,7 +38,6 @@ class _PlanetsViewState extends State<PlanetsView> {
               itemBuilder: (context, index) {
                 var main = snapshot.data?[index];
                 String name = main?.name ?? '';
-                var errorUrl = ConstantTexts().errorUrl;
                 var imageUrl = '${ConstantTexts().planetsBaseUrl}${index + 1}.jpg';
                 CachedNetworkImage image = Methods().cachedImage(imageUrl);
                 return GestureDetector(
@@ -53,9 +52,14 @@ class _PlanetsViewState extends State<PlanetsView> {
                   child: Card(
                     clipBehavior: Clip.antiAlias,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Methods().cachedPhotoBox(image),
-                        Text(name),
+                        Text(
+                          name,
+                          style:
+                              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                        ),
                         const Divider(
                           height: 5,
                         ),
