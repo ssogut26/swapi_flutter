@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class ConstantTexts {
   final charactersBaseUrl = 'https://starwars-visualguide.com/assets/img/characters/';
   final starShipBaseUrl = 'https://starwars-visualguide.com/assets/img/starships/';
@@ -7,4 +9,10 @@ class ConstantTexts {
   final filmsBaseUrl = 'https://starwars-visualguide.com/assets/img/films/';
   final categoryBaseUrl = 'https://starwars-visualguide.com/assets/img/categories/';
   final errorUrl = 'https://starwars-visualguide.com/assets/img/placeholder.jpg';
+}
+
+class ProjectPaddings {
+  static const pagePadding = EdgeInsets.symmetric(horizontal: 8);
+  static const fullPadding = EdgeInsets.all(8);
+  static const marginPadding = EdgeInsets.symmetric(vertical: 6);
 }

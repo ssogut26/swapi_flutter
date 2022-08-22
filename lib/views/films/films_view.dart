@@ -48,7 +48,8 @@ class _FilmsViewState extends State<FilmsView> {
                       MaterialPageRoute(
                         builder: (context) {
                           return FilmResultsView(
-                            index: index + 1,
+                            title: title,
+                            index: index,
                             image: image,
                           );
                         },
@@ -60,9 +61,13 @@ class _FilmsViewState extends State<FilmsView> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Methods().cachedPhotoBox(image),
+                        Hero(
+                          tag: index,
+                          child: Methods().cachedPhotoBox(image),
+                        ),
                         Text(
                           title,
+                          textScaleFactor: 1.0,
                           style:
                               const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                         ),

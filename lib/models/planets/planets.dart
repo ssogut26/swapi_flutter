@@ -12,7 +12,7 @@ class Planets with _$Planets {
   const factory Planets({
     int? count,
     String? next,
-    dynamic? previous,
+    dynamic previous,
     List<PlanetResults>? results,
   }) = _Planets;
 

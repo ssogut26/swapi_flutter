@@ -22,7 +22,7 @@ Planets _$PlanetsFromJson(Map<String, dynamic> json) {
 mixin _$Planets {
   int? get count => throw _privateConstructorUsedError;
   String? get next => throw _privateConstructorUsedError;
-  dynamic? get previous => throw _privateConstructorUsedError;
+  dynamic get previous => throw _privateConstructorUsedError;
   List<PlanetResults>? get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $PlanetsCopyWith<$Res> {
   $Res call(
       {int? count,
       String? next,
-      dynamic? previous,
+      dynamic previous,
       List<PlanetResults>? results});
 }
 
@@ -68,7 +68,7 @@ class _$PlanetsCopyWithImpl<$Res> implements $PlanetsCopyWith<$Res> {
       previous: previous == freezed
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       results: results == freezed
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ abstract class _$$_PlanetsCopyWith<$Res> implements $PlanetsCopyWith<$Res> {
   $Res call(
       {int? count,
       String? next,
-      dynamic? previous,
+      dynamic previous,
       List<PlanetResults>? results});
 }
 
@@ -118,7 +118,7 @@ class __$$_PlanetsCopyWithImpl<$Res> extends _$PlanetsCopyWithImpl<$Res>
       previous: previous == freezed
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       results: results == freezed
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
@@ -145,7 +145,7 @@ class _$_Planets implements _Planets {
   @override
   final String? next;
   @override
-  final dynamic? previous;
+  final dynamic previous;
   final List<PlanetResults>? _results;
   @override
   List<PlanetResults>? get results {
@@ -197,7 +197,7 @@ abstract class _Planets implements Planets {
   const factory _Planets(
       {final int? count,
       final String? next,
-      final dynamic? previous,
+      final dynamic previous,
       final List<PlanetResults>? results}) = _$_Planets;
 
   factory _Planets.fromJson(Map<String, dynamic> json) = _$_Planets.fromJson;
@@ -207,7 +207,7 @@ abstract class _Planets implements Planets {
   @override
   String? get next;
   @override
-  dynamic? get previous;
+  dynamic get previous;
   @override
   List<PlanetResults>? get results;
   @override

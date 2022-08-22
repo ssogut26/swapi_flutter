@@ -86,14 +86,17 @@ class _PeoplesViewState extends State<PeoplesView> {
 
   GestureDetector peopleCard(CachedNetworkImage image, String? name, index) {
     return GestureDetector(
-      onTap: () async {
-        await Navigator.push(
+      onTap: () {
+        Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => PeopleResultsView(
-              index: index,
-              image: image,
-            ),
+            builder: (context) {
+              return PeopleResultsView(
+                name: name ?? '',
+                index: index,
+                image: image,
+              );
+            },
           ),
         );
       },
@@ -102,13 +105,14 @@ class _PeoplesViewState extends State<PeoplesView> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Methods().cachedPhotoBox(image),
+            Hero(
+              tag: 'people$index',
+              child: Methods().cachedPhotoBox(image),
+            ),
             Text(
-              '$name',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+              name ?? '',
+              textScaleFactor: 1.0,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
             ),
             const Divider(
               height: 5,

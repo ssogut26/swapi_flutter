@@ -20,7 +20,7 @@ class Vehicles with _$Vehicles {
 }
 
 @freezed
-class VehicleResult with _$VehiclesResult {
+class VehicleResult with _$VehicleResult {
   const factory VehicleResult({
     String? name,
     String? model,
@@ -32,14 +32,14 @@ class VehicleResult with _$VehiclesResult {
     String? passengers,
     String? cargo_capacity,
     String? consumables,
-    String? vehicleClass,
+    String? vehicle_class,
     List<String>? pilots,
     List<String>? films,
     DateTime? created,
     DateTime? edited,
     String? url,
-  }) = _VehiclesResult;
+  }) = _VehicleResult;
 
   factory VehicleResult.fromJson(Map<String, dynamic> json) =>
-      _$VehiclesResultFromJson(json);
+      _$VehicleResultFromJson(json);
 }

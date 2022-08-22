@@ -30,7 +30,9 @@ class _HomePageViewState extends State<HomePageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text(
+          'HOME',
+        ),
       ),
       body: FutureBuilder<Home?>(
           future: home,
@@ -43,60 +45,62 @@ class _HomePageViewState extends State<HomePageView> {
                   itemCount: 1,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          routeWithImage(context, snapshot, 'Films', () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const FilmsView(),
-                              ),
-                            );
-                          }, '${ConstantTexts().categoryBaseUrl}films.jpg'),
-                          routeWithImage(context, snapshot, 'Characters', () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const PeoplesView(),
-                              ),
-                            );
-                          }, '${ConstantTexts().categoryBaseUrl}character.jpg'),
-                          routeWithImage(context, snapshot, 'Planets', () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const PlanetsView(),
-                              ),
-                            );
-                          }, '${ConstantTexts().categoryBaseUrl}planets.jpg'),
-                          routeWithImage(context, snapshot, 'Star Ships', () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const StarShipsView(),
-                              ),
-                            );
-                          }, '${ConstantTexts().categoryBaseUrl}starships.jpg'),
-                          routeWithImage(context, snapshot, 'Vehicles', () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const VehiclesView(),
-                              ),
-                            );
-                          }, '${ConstantTexts().categoryBaseUrl}vehicles.jpg'),
-                          routeWithImage(context, snapshot, 'Species', () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SpeciesView(),
-                              ),
-                            );
-                          }, '${ConstantTexts().categoryBaseUrl}species.jpg'),
-                        ],
+                      padding: ProjectPaddings.pagePadding,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            routeWithImage(context, snapshot, 'Films', () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const FilmsView(),
+                                ),
+                              );
+                            }, '${ConstantTexts().categoryBaseUrl}films.jpg'),
+                            routeWithImage(context, snapshot, 'Characters', () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PeoplesView(),
+                                ),
+                              );
+                            }, '${ConstantTexts().categoryBaseUrl}character.jpg'),
+                            routeWithImage(context, snapshot, 'Planets', () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PlanetsView(),
+                                ),
+                              );
+                            }, '${ConstantTexts().categoryBaseUrl}planets.jpg'),
+                            routeWithImage(context, snapshot, 'Star Ships', () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const StarShipsView(),
+                                ),
+                              );
+                            }, '${ConstantTexts().categoryBaseUrl}starships.jpg'),
+                            routeWithImage(context, snapshot, 'Vehicles', () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const VehiclesView(),
+                                ),
+                              );
+                            }, '${ConstantTexts().categoryBaseUrl}vehicles.jpg'),
+                            routeWithImage(context, snapshot, 'Species', () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SpeciesView(),
+                                ),
+                              );
+                            }, '${ConstantTexts().categoryBaseUrl}species.jpg'),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -114,24 +118,31 @@ class _HomePageViewState extends State<HomePageView> {
       void Function()? onTap, String imageUrl) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           text,
           style: const TextStyle(
-            fontSize: 24,
+            fontSize: 22,
             fontWeight: FontWeight.w600,
           ),
         ),
         GestureDetector(
           onTap: onTap,
-          child: CachedNetworkImage(
-            fit: BoxFit.fitWidth,
-            imageUrl: imageUrl,
+          child: Container(
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: CachedNetworkImage(
+              fit: BoxFit.fitWidth,
+              imageUrl: imageUrl,
+            ),
           ),
         ),
         const Divider(
           color: Colors.black,
+          thickness: 2,
         ),
       ],
     );

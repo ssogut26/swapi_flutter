@@ -27,14 +27,19 @@ mixin _$Vehicles {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $VehiclesCopyWith<Vehicles> get copyWith => throw _privateConstructorUsedError;
+  $VehiclesCopyWith<Vehicles> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $VehiclesCopyWith<$Res> {
   factory $VehiclesCopyWith(Vehicles value, $Res Function(Vehicles) then) =
       _$VehiclesCopyWithImpl<$Res>;
-  $Res call({int? count, String? next, dynamic previous, List<VehicleResult>? results});
+  $Res call(
+      {int? count,
+      String? next,
+      dynamic previous,
+      List<VehicleResult>? results});
 }
 
 /// @nodoc
@@ -75,16 +80,22 @@ class _$VehiclesCopyWithImpl<$Res> implements $VehiclesCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$$_VehiclesCopyWith<$Res> implements $VehiclesCopyWith<$Res> {
-  factory _$$_VehiclesCopyWith(_$_Vehicles value, $Res Function(_$_Vehicles) then) =
+  factory _$$_VehiclesCopyWith(
+          _$_Vehicles value, $Res Function(_$_Vehicles) then) =
       __$$_VehiclesCopyWithImpl<$Res>;
   @override
-  $Res call({int? count, String? next, dynamic previous, List<VehicleResult>? results});
+  $Res call(
+      {int? count,
+      String? next,
+      dynamic previous,
+      List<VehicleResult>? results});
 }
 
 /// @nodoc
 class __$$_VehiclesCopyWithImpl<$Res> extends _$VehiclesCopyWithImpl<$Res>
     implements _$$_VehiclesCopyWith<$Res> {
-  __$$_VehiclesCopyWithImpl(_$_Vehicles _value, $Res Function(_$_Vehicles) _then)
+  __$$_VehiclesCopyWithImpl(
+      _$_Vehicles _value, $Res Function(_$_Vehicles) _then)
       : super(_value, (v) => _then(v as _$_Vehicles));
 
   @override
@@ -122,10 +133,14 @@ class __$$_VehiclesCopyWithImpl<$Res> extends _$VehiclesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Vehicles implements _Vehicles {
   const _$_Vehicles(
-      {this.count, this.next, this.previous, final List<VehicleResult>? results})
+      {this.count,
+      this.next,
+      this.previous,
+      final List<VehicleResult>? results})
       : _results = results;
 
-  factory _$_Vehicles.fromJson(Map<String, dynamic> json) => _$$_VehiclesFromJson(json);
+  factory _$_Vehicles.fromJson(Map<String, dynamic> json) =>
+      _$$_VehiclesFromJson(json);
 
   @override
   final int? count;
@@ -199,15 +214,16 @@ abstract class _Vehicles implements Vehicles {
   List<VehicleResult>? get results;
   @override
   @JsonKey(ignore: true)
-  _$$_VehiclesCopyWith<_$_Vehicles> get copyWith => throw _privateConstructorUsedError;
+  _$$_VehiclesCopyWith<_$_Vehicles> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-VehicleResult _$VehiclesResultFromJson(Map<String, dynamic> json) {
-  return _VehiclesResult.fromJson(json);
+VehicleResult _$VehicleResultFromJson(Map<String, dynamic> json) {
+  return _VehicleResult.fromJson(json);
 }
 
 /// @nodoc
-mixin _$VehiclesResult {
+mixin _$VehicleResult {
   String? get name => throw _privateConstructorUsedError;
   String? get model => throw _privateConstructorUsedError;
   String? get manufacturer => throw _privateConstructorUsedError;
@@ -218,7 +234,7 @@ mixin _$VehiclesResult {
   String? get passengers => throw _privateConstructorUsedError;
   String? get cargo_capacity => throw _privateConstructorUsedError;
   String? get consumables => throw _privateConstructorUsedError;
-  String? get vehicleClass => throw _privateConstructorUsedError;
+  String? get vehicle_class => throw _privateConstructorUsedError;
   List<String>? get pilots => throw _privateConstructorUsedError;
   List<String>? get films => throw _privateConstructorUsedError;
   DateTime? get created => throw _privateConstructorUsedError;
@@ -227,15 +243,15 @@ mixin _$VehiclesResult {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $VehiclesResultCopyWith<VehicleResult> get copyWith =>
+  $VehicleResultCopyWith<VehicleResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VehiclesResultCopyWith<$Res> {
-  factory $VehiclesResultCopyWith(
+abstract class $VehicleResultCopyWith<$Res> {
+  factory $VehicleResultCopyWith(
           VehicleResult value, $Res Function(VehicleResult) then) =
-      _$VehiclesResultCopyWithImpl<$Res>;
+      _$VehicleResultCopyWithImpl<$Res>;
   $Res call(
       {String? name,
       String? model,
@@ -247,7 +263,7 @@ abstract class $VehiclesResultCopyWith<$Res> {
       String? passengers,
       String? cargo_capacity,
       String? consumables,
-      String? vehicleClass,
+      String? vehicle_class,
       List<String>? pilots,
       List<String>? films,
       DateTime? created,
@@ -256,8 +272,9 @@ abstract class $VehiclesResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VehiclesResultCopyWithImpl<$Res> implements $VehiclesResultCopyWith<$Res> {
-  _$VehiclesResultCopyWithImpl(this._value, this._then);
+class _$VehicleResultCopyWithImpl<$Res>
+    implements $VehicleResultCopyWith<$Res> {
+  _$VehicleResultCopyWithImpl(this._value, this._then);
 
   final VehicleResult _value;
   // ignore: unused_field
@@ -275,7 +292,7 @@ class _$VehiclesResultCopyWithImpl<$Res> implements $VehiclesResultCopyWith<$Res
     Object? passengers = freezed,
     Object? cargo_capacity = freezed,
     Object? consumables = freezed,
-    Object? vehicleClass = freezed,
+    Object? vehicle_class = freezed,
     Object? pilots = freezed,
     Object? films = freezed,
     Object? created = freezed,
@@ -323,9 +340,9 @@ class _$VehiclesResultCopyWithImpl<$Res> implements $VehiclesResultCopyWith<$Res
           ? _value.consumables
           : consumables // ignore: cast_nullable_to_non_nullable
               as String?,
-      vehicleClass: vehicleClass == freezed
-          ? _value.vehicleClass
-          : vehicleClass // ignore: cast_nullable_to_non_nullable
+      vehicle_class: vehicle_class == freezed
+          ? _value.vehicle_class
+          : vehicle_class // ignore: cast_nullable_to_non_nullable
               as String?,
       pilots: pilots == freezed
           ? _value.pilots
@@ -352,10 +369,11 @@ class _$VehiclesResultCopyWithImpl<$Res> implements $VehiclesResultCopyWith<$Res
 }
 
 /// @nodoc
-abstract class _$$_VehiclesResultCopyWith<$Res> implements $VehiclesResultCopyWith<$Res> {
-  factory _$$_VehiclesResultCopyWith(
-          _$_VehiclesResult value, $Res Function(_$_VehiclesResult) then) =
-      __$$_VehiclesResultCopyWithImpl<$Res>;
+abstract class _$$_VehicleResultCopyWith<$Res>
+    implements $VehicleResultCopyWith<$Res> {
+  factory _$$_VehicleResultCopyWith(
+          _$_VehicleResult value, $Res Function(_$_VehicleResult) then) =
+      __$$_VehicleResultCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? name,
@@ -368,7 +386,7 @@ abstract class _$$_VehiclesResultCopyWith<$Res> implements $VehiclesResultCopyWi
       String? passengers,
       String? cargo_capacity,
       String? consumables,
-      String? vehicleClass,
+      String? vehicle_class,
       List<String>? pilots,
       List<String>? films,
       DateTime? created,
@@ -377,14 +395,15 @@ abstract class _$$_VehiclesResultCopyWith<$Res> implements $VehiclesResultCopyWi
 }
 
 /// @nodoc
-class __$$_VehiclesResultCopyWithImpl<$Res> extends _$VehiclesResultCopyWithImpl<$Res>
-    implements _$$_VehiclesResultCopyWith<$Res> {
-  __$$_VehiclesResultCopyWithImpl(
-      _$_VehiclesResult _value, $Res Function(_$_VehiclesResult) _then)
-      : super(_value, (v) => _then(v as _$_VehiclesResult));
+class __$$_VehicleResultCopyWithImpl<$Res>
+    extends _$VehicleResultCopyWithImpl<$Res>
+    implements _$$_VehicleResultCopyWith<$Res> {
+  __$$_VehicleResultCopyWithImpl(
+      _$_VehicleResult _value, $Res Function(_$_VehicleResult) _then)
+      : super(_value, (v) => _then(v as _$_VehicleResult));
 
   @override
-  _$_VehiclesResult get _value => super._value as _$_VehiclesResult;
+  _$_VehicleResult get _value => super._value as _$_VehicleResult;
 
   @override
   $Res call({
@@ -398,14 +417,14 @@ class __$$_VehiclesResultCopyWithImpl<$Res> extends _$VehiclesResultCopyWithImpl
     Object? passengers = freezed,
     Object? cargo_capacity = freezed,
     Object? consumables = freezed,
-    Object? vehicleClass = freezed,
+    Object? vehicle_class = freezed,
     Object? pilots = freezed,
     Object? films = freezed,
     Object? created = freezed,
     Object? edited = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_VehiclesResult(
+    return _then(_$_VehicleResult(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -446,9 +465,9 @@ class __$$_VehiclesResultCopyWithImpl<$Res> extends _$VehiclesResultCopyWithImpl
           ? _value.consumables
           : consumables // ignore: cast_nullable_to_non_nullable
               as String?,
-      vehicleClass: vehicleClass == freezed
-          ? _value.vehicleClass
-          : vehicleClass // ignore: cast_nullable_to_non_nullable
+      vehicle_class: vehicle_class == freezed
+          ? _value.vehicle_class
+          : vehicle_class // ignore: cast_nullable_to_non_nullable
               as String?,
       pilots: pilots == freezed
           ? _value._pilots
@@ -476,8 +495,8 @@ class __$$_VehiclesResultCopyWithImpl<$Res> extends _$VehiclesResultCopyWithImpl
 
 /// @nodoc
 @JsonSerializable()
-class _$_VehiclesResult implements _VehiclesResult {
-  const _$_VehiclesResult(
+class _$_VehicleResult implements _VehicleResult {
+  const _$_VehicleResult(
       {this.name,
       this.model,
       this.manufacturer,
@@ -488,7 +507,7 @@ class _$_VehiclesResult implements _VehiclesResult {
       this.passengers,
       this.cargo_capacity,
       this.consumables,
-      this.vehicleClass,
+      this.vehicle_class,
       final List<String>? pilots,
       final List<String>? films,
       this.created,
@@ -497,8 +516,8 @@ class _$_VehiclesResult implements _VehiclesResult {
       : _pilots = pilots,
         _films = films;
 
-  factory _$_VehiclesResult.fromJson(Map<String, dynamic> json) =>
-      _$$_VehiclesResultFromJson(json);
+  factory _$_VehicleResult.fromJson(Map<String, dynamic> json) =>
+      _$$_VehicleResultFromJson(json);
 
   @override
   final String? name;
@@ -521,7 +540,7 @@ class _$_VehiclesResult implements _VehiclesResult {
   @override
   final String? consumables;
   @override
-  final String? vehicleClass;
+  final String? vehicle_class;
   final List<String>? _pilots;
   @override
   List<String>? get pilots {
@@ -549,27 +568,32 @@ class _$_VehiclesResult implements _VehiclesResult {
 
   @override
   String toString() {
-    return 'VehiclesResult(name: $name, model: $model, manufacturer: $manufacturer, cost_in_credits: $cost_in_credits, length: $length, max_atmosphering_speed: $max_atmosphering_speed, crew: $crew, passengers: $passengers, cargo_capacity: $cargo_capacity, consumables: $consumables, vehicleClass: $vehicleClass, pilots: $pilots, films: $films, created: $created, edited: $edited, url: $url)';
+    return 'VehicleResult(name: $name, model: $model, manufacturer: $manufacturer, cost_in_credits: $cost_in_credits, length: $length, max_atmosphering_speed: $max_atmosphering_speed, crew: $crew, passengers: $passengers, cargo_capacity: $cargo_capacity, consumables: $consumables, vehicle_class: $vehicle_class, pilots: $pilots, films: $films, created: $created, edited: $edited, url: $url)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VehiclesResult &&
+            other is _$_VehicleResult &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.model, model) &&
-            const DeepCollectionEquality().equals(other.manufacturer, manufacturer) &&
+            const DeepCollectionEquality()
+                .equals(other.manufacturer, manufacturer) &&
             const DeepCollectionEquality()
                 .equals(other.cost_in_credits, cost_in_credits) &&
             const DeepCollectionEquality().equals(other.length, length) &&
             const DeepCollectionEquality()
                 .equals(other.max_atmosphering_speed, max_atmosphering_speed) &&
             const DeepCollectionEquality().equals(other.crew, crew) &&
-            const DeepCollectionEquality().equals(other.passengers, passengers) &&
-            const DeepCollectionEquality().equals(other.cargo_capacity, cargo_capacity) &&
-            const DeepCollectionEquality().equals(other.consumables, consumables) &&
-            const DeepCollectionEquality().equals(other.vehicleClass, vehicleClass) &&
+            const DeepCollectionEquality()
+                .equals(other.passengers, passengers) &&
+            const DeepCollectionEquality()
+                .equals(other.cargo_capacity, cargo_capacity) &&
+            const DeepCollectionEquality()
+                .equals(other.consumables, consumables) &&
+            const DeepCollectionEquality()
+                .equals(other.vehicle_class, vehicle_class) &&
             const DeepCollectionEquality().equals(other._pilots, _pilots) &&
             const DeepCollectionEquality().equals(other._films, _films) &&
             const DeepCollectionEquality().equals(other.created, created) &&
@@ -591,7 +615,7 @@ class _$_VehiclesResult implements _VehiclesResult {
       const DeepCollectionEquality().hash(passengers),
       const DeepCollectionEquality().hash(cargo_capacity),
       const DeepCollectionEquality().hash(consumables),
-      const DeepCollectionEquality().hash(vehicleClass),
+      const DeepCollectionEquality().hash(vehicle_class),
       const DeepCollectionEquality().hash(_pilots),
       const DeepCollectionEquality().hash(_films),
       const DeepCollectionEquality().hash(created),
@@ -600,19 +624,19 @@ class _$_VehiclesResult implements _VehiclesResult {
 
   @JsonKey(ignore: true)
   @override
-  _$$_VehiclesResultCopyWith<_$_VehiclesResult> get copyWith =>
-      __$$_VehiclesResultCopyWithImpl<_$_VehiclesResult>(this, _$identity);
+  _$$_VehicleResultCopyWith<_$_VehicleResult> get copyWith =>
+      __$$_VehicleResultCopyWithImpl<_$_VehicleResult>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VehiclesResultToJson(
+    return _$$_VehicleResultToJson(
       this,
     );
   }
 }
 
-abstract class _VehiclesResult implements VehicleResult {
-  const factory _VehiclesResult(
+abstract class _VehicleResult implements VehicleResult {
+  const factory _VehicleResult(
       {final String? name,
       final String? model,
       final String? manufacturer,
@@ -623,15 +647,15 @@ abstract class _VehiclesResult implements VehicleResult {
       final String? passengers,
       final String? cargo_capacity,
       final String? consumables,
-      final String? vehicleClass,
+      final String? vehicle_class,
       final List<String>? pilots,
       final List<String>? films,
       final DateTime? created,
       final DateTime? edited,
-      final String? url}) = _$_VehiclesResult;
+      final String? url}) = _$_VehicleResult;
 
-  factory _VehiclesResult.fromJson(Map<String, dynamic> json) =
-      _$_VehiclesResult.fromJson;
+  factory _VehicleResult.fromJson(Map<String, dynamic> json) =
+      _$_VehicleResult.fromJson;
 
   @override
   String? get name;
@@ -654,7 +678,7 @@ abstract class _VehiclesResult implements VehicleResult {
   @override
   String? get consumables;
   @override
-  String? get vehicleClass;
+  String? get vehicle_class;
   @override
   List<String>? get pilots;
   @override
@@ -667,6 +691,6 @@ abstract class _VehiclesResult implements VehicleResult {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_VehiclesResultCopyWith<_$_VehiclesResult> get copyWith =>
+  _$$_VehicleResultCopyWith<_$_VehicleResult> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -4,14 +4,15 @@ import 'package:swapi_flutter/models/peoples/peoples.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
 import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
-import 'package:swapi_flutter/views/planets/planet_view.dart';
 
 class PeopleResultsView extends StatefulWidget {
   final int index;
+  final String name;
   final CachedNetworkImage image;
   const PeopleResultsView({
     required this.index,
     required this.image,
+    required this.name,
     Key? key,
     people,
   }) : super(
@@ -26,17 +27,21 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
   final NetworkManager _apiService = NetworkManager.instance;
   late Future<PeopleResults?> people;
   late CachedNetworkImage image;
+  late String name;
   @override
   void initState() {
     people = _apiService.fetchPerson(widget.index);
     image = widget.image;
+    name = widget.name;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(name),
+      ),
       body: getPeopleResult(),
     );
   }
@@ -45,21 +50,16 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
     return FutureBuilder<PeopleResults?>(
       future: people,
       builder: (context, snapshot) {
-        String name = snapshot.data?.name ?? '';
         String height = snapshot.data?.height ?? '';
         String birthYear = snapshot.data?.birth_year ?? '';
         String mass = snapshot.data?.mass ?? '';
         String gender = snapshot.data?.gender ?? '';
         String hairColor = snapshot.data?.hair_color ?? '';
         String skinColor = snapshot.data?.skin_color ?? '';
-        String homeWorld = (snapshot.data?.homeworld ?? '');
-        String url = homeWorld.substring(30);
-        int? index = int.tryParse(url.split('/')[0]);
-        String imageUrl = '${ConstantTexts().planetsBaseUrl}$index.jpg';
-        CachedNetworkImage planetImage = Methods().cachedImage(imageUrl);
+        String eyeColor = snapshot.data?.eye_color ?? '';
+
         if (snapshot.hasData) {
           return getPeopleProperty(
-            name,
             context,
             birthYear,
             height,
@@ -67,8 +67,7 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
             gender,
             hairColor,
             skinColor,
-            index,
-            planetImage,
+            eyeColor,
           );
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -78,48 +77,50 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
     );
   }
 
-  Padding getPeopleProperty(
-      String name,
-      BuildContext context,
-      String birthYear,
-      String height,
-      String mass,
-      String gender,
-      String hairColor,
-      String skinColor,
-      int? index,
-      CachedNetworkImage planetImage) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Text(
-            name,
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          Methods().cachedResultImageBox(context, image),
-          Text('Birth Year: $birthYear'),
-          Text('Height: $height'),
-          Text('Mass: $mass'),
-          Text('Gender: $gender'),
-          Text('Hair Color: $hairColor'),
-          Text('Skin Color:' '$skinColor'),
-          GestureDetector(
-              onTap: () async {
-                await Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return PlanetResultsView(
-                    index: index! - 1,
-                    image: planetImage,
-                  );
-                }));
-              },
-              child: Column(
+  SingleChildScrollView getPeopleProperty(
+    BuildContext context,
+    String birthYear,
+    String height,
+    String mass,
+    String gender,
+    String hairColor,
+    String skinColor,
+    String eyeColor,
+  ) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: ProjectPaddings.pagePadding,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Hero(
+              tag: 'people${widget.index}',
+              child: Methods().cachedResultImageBox(
+                context,
+                image,
+              ),
+            ),
+            Methods().dataContainer(
+              context,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text('Home World:'),
-                  SizedBox(height: 100, width: 100, child: planetImage),
+                  Methods().boldAndMediumText('Birth Year: ', birthYear),
+                  Methods().boldAndMediumText('Height: ', height),
+                  Methods().boldAndMediumText('Mass: ', mass),
+                  Methods().boldAndMediumText('Gender: ', gender),
+                  Methods().boldAndMediumText('Hair Color: ', hairColor),
+                  Methods().boldAndMediumText('Eye Color: ', eyeColor),
+                  Methods().boldAndMediumText('Skin Color: ', skinColor),
                 ],
-              )),
-        ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

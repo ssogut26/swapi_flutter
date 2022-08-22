@@ -42,23 +42,33 @@ class _PlanetsViewState extends State<PlanetsView> {
                 CachedNetworkImage image = Methods().cachedImage(imageUrl);
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return PlanetResultsView(
-                        index: index,
-                        image: image,
-                      );
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return PlanetResultsView(
+                            name: name,
+                            index: index,
+                            image: image,
+                          );
+                        },
+                      ),
+                    );
                   },
                   child: Card(
                     clipBehavior: Clip.antiAlias,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Methods().cachedPhotoBox(image),
+                        Hero(
+                          tag: 'planet$index',
+                          child: Methods().cachedPhotoBox(image),
+                        ),
                         Text(
                           name,
+                          textScaleFactor: 1.0,
                           style:
-                              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                              const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                         ),
                         const Divider(
                           height: 5,

@@ -31,12 +31,16 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-
+    
   #   - images/a_dot_ham.jpeg
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Italic.otf
+        - asset: fonts/Poppins-Light.otf
+        - asset: fonts/Poppins-Medium.otf
+        - asset: fonts/Poppins-Regular.otf
+        - asset: fonts/Poppins-SemiBold.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

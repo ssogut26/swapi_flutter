@@ -17,7 +17,7 @@ class FilmManager {
   }
 
   Future<FilmResults?> fetchFilm(int index) async {
-    var uri = Uri.parse('films/$index');
+    var uri = Uri.parse('films/${index + 1}');
     var response = await NetworkManager.instance._dio.get(
       '$uri',
     );

@@ -38,31 +38,39 @@ class _SpeciesViewState extends State<SpeciesView> {
               itemBuilder: (context, index) {
                 var main = snapshot.data?[index];
                 String name = main?.name ?? '';
-                var errorUrl = ConstantTexts().errorUrl;
                 var imageUrl = '${ConstantTexts().speciesBaseUrl}${index + 1}.jpg';
-
                 CachedNetworkImage image = Methods().cachedImage(
                   imageUrl,
                 );
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return SpeciesResultsView(
-                        index: index,
-                        image: image,
-                      );
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SpeciesResultsView(
+                            name: name,
+                            index: index,
+                            image: image,
+                          );
+                        },
+                      ),
+                    );
                   },
                   child: Card(
                     clipBehavior: Clip.antiAlias,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Methods().cachedPhotoBox(image),
+                        Hero(
+                          tag: 'species$index',
+                          child: Methods().cachedPhotoBox(image),
+                        ),
                         Text(
                           name,
+                          textScaleFactor: 1.0,
                           style:
-                              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                              const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                         ),
                         const Divider(
                           height: 5,

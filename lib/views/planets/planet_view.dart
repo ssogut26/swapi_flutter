@@ -2,15 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/planets/planets.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
+import 'package:swapi_flutter/utils/constants.dart';
+import 'package:swapi_flutter/utils/reusableMethods.dart';
 
 class PlanetResultsView extends StatefulWidget {
   final int index;
+  final String name;
   final CachedNetworkImage image;
   const PlanetResultsView({
     required this.index,
     required this.image,
+    required this.name,
     Key? key,
-    people,
   }) : super(
           key: key,
         );
@@ -23,19 +26,22 @@ class _PlanetResultsViewState extends State<PlanetResultsView> {
   final NetworkManager _apiService = NetworkManager.instance;
   late Future<PlanetResults?> planet;
   late CachedNetworkImage image;
+  late String name;
 
   @override
   void initState() {
     planet = _apiService.fetchPlanet(widget.index);
     image = widget.image;
-
+    name = widget.name;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(name),
+      ),
       body: getPlanetResults(),
     );
   }
@@ -55,7 +61,6 @@ class _PlanetResultsViewState extends State<PlanetResultsView> {
         Object terrain = snapshot.data?.terrain ?? '';
         if (snapshot.hasData) {
           return planetProperties(
-            name,
             context,
             diameter,
             population,
@@ -75,7 +80,6 @@ class _PlanetResultsViewState extends State<PlanetResultsView> {
   }
 
   SingleChildScrollView planetProperties(
-      String name,
       BuildContext context,
       String diameter,
       Object population,
@@ -86,29 +90,40 @@ class _PlanetResultsViewState extends State<PlanetResultsView> {
       Object rotationPeriod,
       String orbitalPeriod) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          Text(
-            name,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+      child: Padding(
+        padding: ProjectPaddings.pagePadding,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
-            width: MediaQuery.of(context).size.width,
-            child: image,
-          ),
-          Text('Diameter: $diameter'),
-          Text('Population: $population'),
-          Text('Climate: $climate'),
-          Text('Terrain: $terrain'),
-          Text('Gravity: $gravity'),
-          Text('Surface Water: $surfaceWater'),
-          Text('Rotation Period: $rotationPeriod'),
-          Text('Orbital Period: $orbitalPeriod'),
-        ],
+            Hero(
+              tag: 'planet${widget.index}',
+              child: Methods().cachedResultImageBox(
+                context,
+                image,
+              ),
+            ),
+            Methods().dataContainer(
+              context,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Methods().boldAndMediumText('Diameter :', diameter),
+                  Methods().boldAndMediumText('Population :', '$population'),
+                  Methods().boldAndMediumText('Climate :', climate),
+                  Methods().boldAndMediumText('Terrain :', '$terrain'),
+                  Methods().boldAndMediumText('Gravity :', gravity),
+                  Methods().boldAndMediumText('Surface Water :', '$surfaceWater'),
+                  Methods().boldAndMediumText('Rotation Period :', '$rotationPeriod'),
+                  Methods().boldAndMediumText('Orbital Period :', orbitalPeriod),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

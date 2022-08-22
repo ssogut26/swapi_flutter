@@ -40,7 +40,6 @@ class _StarShipsViewState extends State<StarShipsView> {
                 String name = main?.name ?? '';
                 var url = snapshot.data?[index].url?.substring(32) ?? '';
                 index = int.parse(url.split('/')[0]);
-                String errorUrl = ConstantTexts().errorUrl;
                 String imageUrl = '${ConstantTexts().starShipBaseUrl}$index.jpg';
                 CachedNetworkImage image = Methods().cachedImage(
                   imageUrl,
@@ -52,6 +51,7 @@ class _StarShipsViewState extends State<StarShipsView> {
                       MaterialPageRoute(
                         builder: (context) {
                           return StarShipResultsView(
+                            name: name,
                             index: index,
                             image: image,
                           );
@@ -64,11 +64,15 @@ class _StarShipsViewState extends State<StarShipsView> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Methods().cachedPhotoBox(image),
+                        Hero(
+                          tag: 'starship$index',
+                          child: Methods().cachedPhotoBox(image),
+                        ),
                         Text(
                           name,
+                          textScaleFactor: 1.0,
                           style:
-                              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                              const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                         ),
                         const Divider(
                           height: 5,

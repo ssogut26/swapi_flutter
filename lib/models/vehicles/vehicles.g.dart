@@ -15,15 +15,16 @@ _$_Vehicles _$$_VehiclesFromJson(Map<String, dynamic> json) => _$_Vehicles(
           .toList(),
     );
 
-Map<String, dynamic> _$$_VehiclesToJson(_$_Vehicles instance) => <String, dynamic>{
+Map<String, dynamic> _$$_VehiclesToJson(_$_Vehicles instance) =>
+    <String, dynamic>{
       'count': instance.count,
       'next': instance.next,
       'previous': instance.previous,
       'results': instance.results,
     };
 
-_$_VehiclesResult _$$_VehiclesResultFromJson(Map<String, dynamic> json) =>
-    _$_VehiclesResult(
+_$_VehicleResult _$$_VehicleResultFromJson(Map<String, dynamic> json) =>
+    _$_VehicleResult(
       name: json['name'] as String?,
       model: json['model'] as String?,
       manufacturer: json['manufacturer'] as String?,
@@ -34,15 +35,21 @@ _$_VehiclesResult _$$_VehiclesResultFromJson(Map<String, dynamic> json) =>
       passengers: json['passengers'] as String?,
       cargo_capacity: json['cargo_capacity'] as String?,
       consumables: json['consumables'] as String?,
-      vehicleClass: json['vehicleClass'] as String?,
-      pilots: (json['pilots'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      films: (json['films'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      created: json['created'] == null ? null : DateTime.parse(json['created'] as String),
-      edited: json['edited'] == null ? null : DateTime.parse(json['edited'] as String),
+      vehicle_class: json['vehicle_class'] as String?,
+      pilots:
+          (json['pilots'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      films:
+          (json['films'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      created: json['created'] == null
+          ? null
+          : DateTime.parse(json['created'] as String),
+      edited: json['edited'] == null
+          ? null
+          : DateTime.parse(json['edited'] as String),
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$$_VehiclesResultToJson(_$_VehiclesResult instance) =>
+Map<String, dynamic> _$$_VehicleResultToJson(_$_VehicleResult instance) =>
     <String, dynamic>{
       'name': instance.name,
       'model': instance.model,
@@ -54,7 +61,7 @@ Map<String, dynamic> _$$_VehiclesResultToJson(_$_VehiclesResult instance) =>
       'passengers': instance.passengers,
       'cargo_capacity': instance.cargo_capacity,
       'consumables': instance.consumables,
-      'vehicleClass': instance.vehicleClass,
+      'vehicle_class': instance.vehicle_class,
       'pilots': instance.pilots,
       'films': instance.films,
       'created': instance.created?.toIso8601String(),
