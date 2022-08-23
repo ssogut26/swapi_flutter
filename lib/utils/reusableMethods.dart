@@ -33,8 +33,6 @@ class Methods {
           color: Colors.black,
         ),
         clipBehavior: Clip.antiAlias,
-        height: image?.height,
-        width: image?.width,
         child: Center(child: image),
       ),
     );

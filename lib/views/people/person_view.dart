@@ -50,34 +50,30 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
     return FutureBuilder<PeopleResults?>(
       future: people,
       builder: (context, snapshot) {
-        String height = snapshot.data?.height ?? '';
-        String birthYear = snapshot.data?.birth_year ?? '';
-        String mass = snapshot.data?.mass ?? '';
-        String gender = snapshot.data?.gender ?? '';
-        String hairColor = snapshot.data?.hair_color ?? '';
-        String skinColor = snapshot.data?.skin_color ?? '';
-        String eyeColor = snapshot.data?.eye_color ?? '';
+        var main = snapshot.data;
+        String height = main?.height ?? '';
+        String birthYear = main?.birth_year ?? '';
+        String mass = main?.mass ?? '';
+        String gender = main?.gender ?? '';
+        String hairColor = main?.hair_color ?? '';
+        String skinColor = main?.skin_color ?? '';
+        String eyeColor = main?.eye_color ?? '';
 
-        if (snapshot.hasData) {
-          return getPeopleProperty(
-            context,
-            birthYear,
-            height,
-            mass,
-            gender,
-            hairColor,
-            skinColor,
-            eyeColor,
-          );
-        } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
-        }
-        return const Center(child: CircularProgressIndicator());
+        return getPeopleProperty(
+          context,
+          birthYear,
+          height,
+          mass,
+          gender,
+          hairColor,
+          skinColor,
+          eyeColor,
+        );
       },
     );
   }
 
-  SingleChildScrollView getPeopleProperty(
+  Padding getPeopleProperty(
     BuildContext context,
     String birthYear,
     String height,
@@ -87,23 +83,27 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
     String skinColor,
     String eyeColor,
   ) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: ProjectPaddings.pagePadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            Hero(
-              tag: 'people${widget.index}',
+    return Padding(
+      padding: ProjectPaddings.pagePadding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            flex: 50,
+            child: Hero(
+              tag: widget.index,
               child: Methods().cachedResultImageBox(
                 context,
                 image,
               ),
             ),
-            Methods().dataContainer(
+          ),
+          Expanded(
+            flex: 50,
+            child: Methods().dataContainer(
               context,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,8 +119,8 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

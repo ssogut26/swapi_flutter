@@ -82,20 +82,23 @@ class _SpeciesResultsViewState extends State<SpeciesResultsView> {
           Hero(
               tag: 'species${widget.index}',
               child: Methods().cachedResultImageBox(context, image)),
-          Methods().dataContainer(
-            context,
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Methods().boldAndMediumText('Name: ', name),
-                Methods().boldAndMediumText('Average Life Span: ', averageLifeSpan),
-                Methods().boldAndMediumText('Height: ', height),
-                Methods().boldAndMediumText('Classification: ', classification),
-                Methods().boldAndMediumText('Eye Colors: ', eyeColors),
-                Methods().boldAndMediumText('Hair Colors: ', hairColors),
-                Methods().boldAndMediumText('Language: ', language),
-              ],
+          Expanded(
+            flex: 65,
+            child: Methods().dataContainer(
+              context,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Methods().boldAndMediumText('Name: ', name),
+                  Methods().boldAndMediumText('Average Life Span: ', averageLifeSpan),
+                  Methods().boldAndMediumText('Height: ', height),
+                  Methods().boldAndMediumText('Classification: ', classification),
+                  Methods().boldAndMediumText('Eye Colors: ', eyeColors),
+                  Methods().boldAndMediumText('Hair Colors: ', hairColors),
+                  Methods().boldAndMediumText('Language: ', language),
+                ],
+              ),
             ),
           ),
         ]),

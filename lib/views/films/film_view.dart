@@ -108,7 +108,7 @@ class _FilmResultsViewState extends State<FilmResultsView> {
                   Methods().boldAndMediumText('Director: ', director),
                   Methods().boldAndMediumText('Producer: ', producer),
                   Methods().boldAndMediumText('Episode Id: ', '$episodeId'),
-                  Methods().boldAndMediumText('Opening Crawl: ', openingCrawl),
+                  Methods().boldAndMediumText('Opening Crawl: \n', openingCrawl),
                 ],
               ),
             ),

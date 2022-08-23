@@ -43,7 +43,7 @@ class _PeoplesViewState extends State<PeoplesView> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: ListView.builder(
-              itemCount: snapshot.data?.length ?? 0,
+              itemCount: 1,
               itemBuilder: (context, index) {
                 return Row(
                   children: [
@@ -70,7 +70,7 @@ class _PeoplesViewState extends State<PeoplesView> {
         clipBehavior: Clip.antiAlias,
         padding: const EdgeInsets.all(8),
         shrinkWrap: true,
-        itemCount: snapshot.data?.length ?? 0,
+        itemCount: snapshot.data?.length,
         itemBuilder: (context, index) {
           PeopleResults? main = snapshot.data?[index];
           String name = main?.name ?? '';
@@ -106,7 +106,7 @@ class _PeoplesViewState extends State<PeoplesView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Hero(
-              tag: 'people$index',
+              tag: index,
               child: Methods().cachedPhotoBox(image),
             ),
             Text(

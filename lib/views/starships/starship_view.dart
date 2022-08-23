@@ -83,7 +83,7 @@ class _StarShipResultsViewState extends State<StarShipResultsView> {
     );
   }
 
-  Padding starShipProperties(
+  SingleChildScrollView starShipProperties(
       String name,
       BuildContext context,
       String model,
@@ -98,40 +98,42 @@ class _StarShipResultsViewState extends State<StarShipResultsView> {
       String passengers,
       String maxAtmospheringSpeed,
       String costInCredits) {
-    return Padding(
-      padding: ProjectPaddings.pagePadding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 10,
-          ),
-          Hero(
-              tag: 'starship${widget.index}',
-              child: Methods().cachedResultImageBox(context, image)),
-          Methods().dataContainer(
-            context,
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Methods().boldAndMediumText('Model: ', model),
-                Methods().boldAndMediumText('MGLT: ', MGLT),
-                Methods().boldAndMediumText('Cargo Capacity: ', cargoCap),
-                Methods().boldAndMediumText('Hyper Drive Rating: ', hyperDriveRating),
-                Methods().boldAndMediumText('Length: ', length),
-                Methods().boldAndMediumText('Consumables: ', consumables),
-                Methods().boldAndMediumText('Manufacturer: ', manufacturer),
-                Methods().boldAndMediumText('Starship Class: ', starshipClass),
-                Methods().boldAndMediumText('Crew: ', crew),
-                Methods().boldAndMediumText('Passengers: ', passengers),
-                Methods()
-                    .boldAndMediumText('Max Atmosphering Speed: ', maxAtmospheringSpeed),
-                Methods().boldAndMediumText('Cost In Credits: ', costInCredits),
-              ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: ProjectPaddings.pagePadding,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10,
             ),
-          ),
-        ],
+            Hero(
+                tag: 'starship${widget.index}',
+                child: Methods().cachedResultImageBox(context, image)),
+            Methods().dataContainer(
+              context,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Methods().boldAndMediumText('Model: ', model),
+                  Methods().boldAndMediumText('MGLT: ', MGLT),
+                  Methods().boldAndMediumText('Cargo Capacity: ', cargoCap),
+                  Methods().boldAndMediumText('Hyper Drive Rating: ', hyperDriveRating),
+                  Methods().boldAndMediumText('Length: ', length),
+                  Methods().boldAndMediumText('Consumables: ', consumables),
+                  Methods().boldAndMediumText('Manufacturer: ', manufacturer),
+                  Methods().boldAndMediumText('Starship Class: ', starshipClass),
+                  Methods().boldAndMediumText('Crew: ', crew),
+                  Methods().boldAndMediumText('Passengers: ', passengers),
+                  Methods().boldAndMediumText(
+                      'Max Atmosphering Speed: ', maxAtmospheringSpeed),
+                  Methods().boldAndMediumText('Cost In Credits: ', costInCredits),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
