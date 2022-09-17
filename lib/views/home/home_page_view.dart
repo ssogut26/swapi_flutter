@@ -51,6 +51,16 @@ class _HomePageViewState extends State<HomePageView> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            const Text(
+                              'Welcome to the Star Wars Universe',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
                             routeWithImage(context, snapshot, 'Films', () {
                               Navigator.push(
                                 context,
@@ -63,7 +73,7 @@ class _HomePageViewState extends State<HomePageView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const PeoplesView(),
+                                  builder: (context) => PeoplesView(page: 1),
                                 ),
                               );
                             }, '${ConstantTexts().categoryBaseUrl}character.jpg'),
@@ -71,7 +81,7 @@ class _HomePageViewState extends State<HomePageView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const PlanetsView(),
+                                  builder: (context) => PlanetsView(page: 1),
                                 ),
                               );
                             }, '${ConstantTexts().categoryBaseUrl}planets.jpg'),
@@ -79,7 +89,7 @@ class _HomePageViewState extends State<HomePageView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const StarShipsView(),
+                                  builder: (context) => StarShipsView(page: 1),
                                 ),
                               );
                             }, '${ConstantTexts().categoryBaseUrl}starships.jpg'),
@@ -87,7 +97,7 @@ class _HomePageViewState extends State<HomePageView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const VehiclesView(),
+                                  builder: (context) => VehiclesView(page: 1),
                                 ),
                               );
                             }, '${ConstantTexts().categoryBaseUrl}vehicles.jpg'),
@@ -114,37 +124,36 @@ class _HomePageViewState extends State<HomePageView> {
     );
   }
 
-  Column routeWithImage(BuildContext context, AsyncSnapshot<Home?> snapshot, text,
+  Card routeWithImage(BuildContext context, AsyncSnapshot<Home?> snapshot, text,
       void Function()? onTap, String imageUrl) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          text,
-          style: const TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: CachedNetworkImage(
-              fit: BoxFit.fitWidth,
-              imageUrl: imageUrl,
+    return Card(
+      color: Theme.of(context).primaryColor,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: onTap,
+            child: Container(
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: CachedNetworkImage(
+                fit: BoxFit.fitWidth,
+                imageUrl: imageUrl,
+              ),
             ),
           ),
-        ),
-        const Divider(
-          color: Colors.black,
-          thickness: 2,
-        ),
-      ],
+          Text(
+            text,
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

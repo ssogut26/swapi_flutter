@@ -11,8 +11,6 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-  bool isLoading = true;
-
   @override
   void initState() {
     super.initState();

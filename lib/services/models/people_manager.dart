@@ -1,30 +1,18 @@
 part of 'package:swapi_flutter/services/network/network_manager.dart';
 
 class PeopleManager {
-  Future<List<PeopleResults>?> fetchPeople() async {
+  Future<List<PeopleResults>?> fetchPeople(int page) async {
     try {
-      var response = await NetworkManager.instance._dio.get('people');
-      int page = 0;
-      List<PeopleResults> tempList = [];
-      List<PeopleResults> tempList2 = [];
-      do {
-        page++;
-        response =
-            await NetworkManager.instance._dio.getUri(Uri.parse('people/?page=$page'));
-        if (response.statusCode == 200) {
-          Peoples result = Peoples.fromJson(response.data);
-          tempList =
-              result.results!.asMap().entries.map((e) => result.results![e.key]).toList();
-          tempList2.addAll(tempList);
-        }
-      } while (response.data['next'] != null && page <= 9);
-      return tempList2;
+      var response = await NetworkManager.instance._dio.get('people/?page=$page');
+      if (response.statusCode == 200) {
+        return Peoples.fromJson(response.data).results;
+      }
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
     }
-    return null;
+    return [];
   }
 
   Future<PeopleResults?> fetchPerson(int index) async {

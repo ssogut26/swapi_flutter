@@ -46,7 +46,7 @@ class Methods {
     );
   }
 
-  CachedNetworkImage cachedImage(String imageUrl) {
+  CachedNetworkImage cachedImage(imageUrl) {
     return CachedNetworkImage(
       placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
       errorWidget: (context, url, error) => Image.asset('assets/images/placeholder.jpg'),

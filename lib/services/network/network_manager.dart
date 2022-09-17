@@ -29,16 +29,16 @@ class NetworkManager {
 
   static final NetworkManager instance = NetworkManager._();
   Dio get service => _dio;
-  fetchPeople() => PeopleManager().fetchPeople();
+  fetchPeople(page) => PeopleManager().fetchPeople(page);
   fetchPerson(index) => PeopleManager().fetchPerson(index);
   fetchHome() => HomePageManager().fetchHome();
   fetchFilms() => FilmManager().fetchFilms();
   fetchFilm(index) => FilmManager().fetchFilm(index);
-  fetchPlanets() => PlanetManager().fetchPlanets();
+  fetchPlanets(page) => PlanetManager().fetchPlanets(page);
   fetchPlanet(index) => PlanetManager().fetchPlanet(index);
-  fetchVehicles() => VehicleManager().fetchVehicles();
+  fetchVehicles(page) => VehicleManager().fetchVehicles(page);
   fetchVehicle(index) => VehicleManager().fetchVehicle(index);
-  fetchStarships() => StarShipManager().fetchStarShips();
+  fetchStarships(page) => StarShipManager().fetchStarShips(page);
   fetchStarship(index) => StarShipManager().fetchStarShip(index);
   fetchAllSpecies() => SpeciesManager().fetchAllSpecies();
   fetchSpecies(index) => SpeciesManager().fetchSpecies(index);

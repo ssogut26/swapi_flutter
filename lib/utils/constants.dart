@@ -9,6 +9,9 @@ class ConstantTexts {
   final filmsBaseUrl = 'https://starwars-visualguide.com/assets/img/films/';
   final categoryBaseUrl = 'https://starwars-visualguide.com/assets/img/categories/';
   final errorUrl = 'https://starwars-visualguide.com/assets/img/placeholder.jpg';
+
+  final firstPage = 'You are on the first page';
+  final lastPage = 'End of the results';
 }
 
 class ProjectPaddings {

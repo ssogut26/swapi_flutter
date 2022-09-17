@@ -58,6 +58,7 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
         String hairColor = main?.hair_color ?? '';
         String skinColor = main?.skin_color ?? '';
         String eyeColor = main?.eye_color ?? '';
+        String homeWorld = main?.homeworld ?? '';
 
         return getPeopleProperty(
           context,
@@ -68,6 +69,7 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
           hairColor,
           skinColor,
           eyeColor,
+          homeWorld,
         );
       },
     );
@@ -82,6 +84,7 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
     String hairColor,
     String skinColor,
     String eyeColor,
+    String homeWorld,
   ) {
     return Padding(
       padding: ProjectPaddings.pagePadding,
@@ -116,6 +119,7 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
                   Methods().boldAndMediumText('Hair Color: ', hairColor),
                   Methods().boldAndMediumText('Eye Color: ', eyeColor),
                   Methods().boldAndMediumText('Skin Color: ', skinColor),
+                  Methods().boldAndMediumText('Homeworld: ', homeWorld),
                 ],
               ),
             ),
