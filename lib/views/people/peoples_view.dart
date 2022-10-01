@@ -8,8 +8,8 @@ import 'package:swapi_flutter/utils/reusableMethods.dart';
 import 'package:swapi_flutter/views/people/person_view.dart';
 
 class PeoplesView extends StatefulWidget {
+  PeoplesView({super.key, required this.page});
   int page = 1;
-  PeoplesView({Key? key, required this.page}) : super(key: key);
 
   @override
   State<PeoplesView> createState() => _PeoplesViewState();
@@ -56,7 +56,7 @@ class _PeoplesViewState extends State<PeoplesView> {
             },
           );
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text('${snapshot.error}');
         }
         return const Center(child: CircularProgressIndicator());
       },
@@ -95,27 +95,28 @@ class _PeoplesViewState extends State<PeoplesView> {
             },
           ),
           DropdownButton(
-              items: List.generate(
-                9,
-                (index) => DropdownMenuItem(
-                  value: index + 1,
-                  child: Text((index + 1).toString()),
-                ),
+            items: List.generate(
+              9,
+              (index) => DropdownMenuItem(
+                value: index + 1,
+                child: Text((index + 1).toString()),
               ),
-              onChanged: (value) {
-                setState(() {
-                  page = value as int;
-                });
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return PeoplesView(page: page);
-                    },
-                  ),
-                );
-              },
-              value: page),
+            ),
+            onChanged: (value) {
+              setState(() {
+                page = value as int;
+              });
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return PeoplesView(page: page);
+                  },
+                ),
+              );
+            },
+            value: page,
+          ),
           IconButton(
             icon: const Icon(Icons.arrow_forward_ios_sharp),
             onPressed: () {
@@ -147,7 +148,9 @@ class _PeoplesViewState extends State<PeoplesView> {
   }
 
   SingleChildScrollView peopleList(
-      BuildContext context, AsyncSnapshot<List<PeopleResults>?> snapshot) {
+    BuildContext context,
+    AsyncSnapshot<List<PeopleResults>?> snapshot,
+  ) {
     return SingleChildScrollView(
       child: ListView.builder(
         clipBehavior: Clip.antiAlias,
@@ -156,19 +159,19 @@ class _PeoplesViewState extends State<PeoplesView> {
         shrinkWrap: true,
         itemCount: snapshot.data?.length,
         itemBuilder: (context, index) {
-          PeopleResults? main = snapshot.data?[index];
-          String name = main?.name ?? '';
-          String url = main?.url?.substring(29) ?? '';
+          final main = snapshot.data?[index];
+          final name = main?.name ?? '';
+          final url = main?.url?.substring(29) ?? '';
           index = int.parse(url.split('/')[0]);
-          String imageUrl = '${ConstantTexts().charactersBaseUrl}$index.jpg';
-          CachedNetworkImage image = Methods().cachedImage(imageUrl);
+          final imageUrl = '${ConstantTexts().charactersBaseUrl}$index.jpg';
+          final image = Methods().cachedImage(imageUrl);
           return peopleCard(image, name, index);
         },
       ),
     );
   }
 
-  GestureDetector peopleCard(CachedNetworkImage image, String? name, index) {
+  GestureDetector peopleCard(CachedNetworkImage image, String? name, int index) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -197,7 +200,7 @@ class _PeoplesViewState extends State<PeoplesView> {
                 ),
                 Text(
                   name ?? '',
-                  textScaleFactor: 1.0,
+                  textScaleFactor: 1,
                   style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
                 const Divider(

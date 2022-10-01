@@ -6,18 +6,15 @@ import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
 
 class PeopleResultsView extends StatefulWidget {
-  final int index;
-  final String name;
-  final CachedNetworkImage image;
   const PeopleResultsView({
     required this.index,
     required this.image,
     required this.name,
-    Key? key,
-    people,
-  }) : super(
-          key: key,
-        );
+    super.key,
+  });
+  final int index;
+  final String name;
+  final CachedNetworkImage image;
 
   @override
   State<PeopleResultsView> createState() => _PeopleResultsViewState();
@@ -50,15 +47,14 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
     return FutureBuilder<PeopleResults?>(
       future: people,
       builder: (context, snapshot) {
-        var main = snapshot.data;
-        String height = main?.height ?? '';
-        String birthYear = main?.birth_year ?? '';
-        String mass = main?.mass ?? '';
-        String gender = main?.gender ?? '';
-        String hairColor = main?.hair_color ?? '';
-        String skinColor = main?.skin_color ?? '';
-        String eyeColor = main?.eye_color ?? '';
-        String homeWorld = main?.homeworld ?? '';
+        final main = snapshot.data;
+        final height = main?.height ?? '';
+        final birthYear = main?.birth_year ?? '';
+        final mass = main?.mass ?? '';
+        final gender = main?.gender ?? '';
+        final hairColor = main?.hair_color ?? '';
+        final skinColor = main?.skin_color ?? '';
+        final eyeColor = main?.eye_color ?? '';
 
         return getPeopleProperty(
           context,
@@ -69,7 +65,6 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
           hairColor,
           skinColor,
           eyeColor,
-          homeWorld,
         );
       },
     );
@@ -84,7 +79,6 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
     String hairColor,
     String skinColor,
     String eyeColor,
-    String homeWorld,
   ) {
     return Padding(
       padding: ProjectPaddings.pagePadding,
@@ -119,7 +113,6 @@ class _PeopleResultsViewState extends State<PeopleResultsView> {
                   Methods().boldAndMediumText('Hair Color: ', hairColor),
                   Methods().boldAndMediumText('Eye Color: ', eyeColor),
                   Methods().boldAndMediumText('Skin Color: ', skinColor),
-                  Methods().boldAndMediumText('Homeworld: ', homeWorld),
                 ],
               ),
             ),

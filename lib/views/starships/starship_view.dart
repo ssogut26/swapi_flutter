@@ -6,18 +6,15 @@ import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
 
 class StarShipResultsView extends StatefulWidget {
-  final int index;
-  final CachedNetworkImage image;
-  final String name;
   const StarShipResultsView({
     required this.index,
     required this.image,
     required this.name,
-    Key? key,
-    people,
-  }) : super(
-          key: key,
-        );
+    super.key,
+  });
+  final int index;
+  final CachedNetworkImage image;
+  final String name;
 
   @override
   State<StarShipResultsView> createState() => _StarShipResultsViewState();
@@ -51,53 +48,55 @@ class _StarShipResultsViewState extends State<StarShipResultsView> {
     return FutureBuilder<StarShipResults?>(
       future: starShip,
       builder: (context, snapshot) {
-        String name = snapshot.data?.name ?? '';
-        String model = snapshot.data?.model ?? '';
-        String MGLT = snapshot.data?.MGLT ?? '';
-        String cargoCap = snapshot.data?.cargo_capacity ?? '';
-        String hyperDriveRating = snapshot.data?.hyperdrive_rating ?? '';
-        String length = snapshot.data?.length ?? '';
-        String consumables = snapshot.data?.consumables ?? '';
-        String manufacturer = snapshot.data?.manufacturer ?? '';
-        String starshipClass = snapshot.data?.starship_class ?? '';
-        String crew = snapshot.data?.crew ?? '';
-        String passengers = snapshot.data?.passengers ?? '';
-        String maxAtmospheringSpeed = snapshot.data?.max_atmosphering_speed ?? '';
-        String costInCredits = snapshot.data?.cost_in_credits ?? '';
+        final name = snapshot.data?.name ?? '';
+        final model = snapshot.data?.model ?? '';
+        final MGLT = snapshot.data?.MGLT ?? '';
+        final cargoCap = snapshot.data?.cargo_capacity ?? '';
+        final hyperDriveRating = snapshot.data?.hyperdrive_rating ?? '';
+        final length = snapshot.data?.length ?? '';
+        final consumables = snapshot.data?.consumables ?? '';
+        final manufacturer = snapshot.data?.manufacturer ?? '';
+        final starshipClass = snapshot.data?.starship_class ?? '';
+        final crew = snapshot.data?.crew ?? '';
+        final passengers = snapshot.data?.passengers ?? '';
+        final maxAtmospheringSpeed = snapshot.data?.max_atmosphering_speed ?? '';
+        final costInCredits = snapshot.data?.cost_in_credits ?? '';
         return starShipProperties(
-            name,
-            context,
-            model,
-            MGLT,
-            cargoCap,
-            hyperDriveRating,
-            length,
-            consumables,
-            manufacturer,
-            starshipClass,
-            crew,
-            passengers,
-            maxAtmospheringSpeed,
-            costInCredits);
+          name,
+          context,
+          model,
+          MGLT,
+          cargoCap,
+          hyperDriveRating,
+          length,
+          consumables,
+          manufacturer,
+          starshipClass,
+          crew,
+          passengers,
+          maxAtmospheringSpeed,
+          costInCredits,
+        );
       },
     );
   }
 
   SingleChildScrollView starShipProperties(
-      String name,
-      BuildContext context,
-      String model,
-      String MGLT,
-      String cargoCap,
-      String hyperDriveRating,
-      String length,
-      String consumables,
-      String manufacturer,
-      String starshipClass,
-      String crew,
-      String passengers,
-      String maxAtmospheringSpeed,
-      String costInCredits) {
+    String name,
+    BuildContext context,
+    String model,
+    String MGLT,
+    String cargoCap,
+    String hyperDriveRating,
+    String length,
+    String consumables,
+    String manufacturer,
+    String starshipClass,
+    String crew,
+    String passengers,
+    String maxAtmospheringSpeed,
+    String costInCredits,
+  ) {
     return SingleChildScrollView(
       child: Padding(
         padding: ProjectPaddings.pagePadding,
@@ -108,8 +107,9 @@ class _StarShipResultsViewState extends State<StarShipResultsView> {
               height: 10,
             ),
             Hero(
-                tag: 'starship${widget.index}',
-                child: Methods().cachedResultImageBox(context, image)),
+              tag: 'starship${widget.index}',
+              child: Methods().cachedResultImageBox(context, image),
+            ),
             Methods().dataContainer(
               context,
               Column(
@@ -127,7 +127,9 @@ class _StarShipResultsViewState extends State<StarShipResultsView> {
                   Methods().boldAndMediumText('Crew: ', crew),
                   Methods().boldAndMediumText('Passengers: ', passengers),
                   Methods().boldAndMediumText(
-                      'Max Atmosphering Speed: ', maxAtmospheringSpeed),
+                    'Max Atmosphering Speed: ',
+                    maxAtmospheringSpeed,
+                  ),
                   Methods().boldAndMediumText('Cost In Credits: ', costInCredits),
                 ],
               ),

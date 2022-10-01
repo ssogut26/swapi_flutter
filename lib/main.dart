@@ -11,13 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Staw Wars App',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.grey[400],
+        scaffoldBackgroundColor: Colors.accents[9][400],
         useMaterial3: true,
         appBarTheme: AppBarTheme(
           scrolledUnderElevation: 0,
-          color: Colors.blueGrey[400],
+          color: Colors.red[700],
           titleTextStyle: const TextStyle(
             color: Colors.black,
             fontFamily: 'Poppins',
@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
         fontFamily: 'Poppins',
-        primarySwatch: Colors.blue,
       ),
       home: const SplashView(),
     );

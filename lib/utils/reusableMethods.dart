@@ -82,7 +82,7 @@ class Methods {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.grey,
+        color: Colors.indigo[400],
       ),
       clipBehavior: Clip.antiAlias,
       child: child,

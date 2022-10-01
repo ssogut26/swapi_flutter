@@ -31,7 +31,7 @@ class _HomePageViewState extends State<HomePageView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'HOME',
+          'StarWars',
         ),
       ),
       body: FutureBuilder<Home?>(
@@ -127,7 +127,7 @@ class _HomePageViewState extends State<HomePageView> {
   Card routeWithImage(BuildContext context, AsyncSnapshot<Home?> snapshot, text,
       void Function()? onTap, String imageUrl) {
     return Card(
-      color: Theme.of(context).primaryColor,
+      color: Colors.primaries[7],
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,

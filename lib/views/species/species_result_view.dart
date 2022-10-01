@@ -6,18 +6,15 @@ import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
 
 class SpeciesResultsView extends StatefulWidget {
-  final int index;
-  final String name;
-  final CachedNetworkImage image;
   const SpeciesResultsView({
     required this.index,
     required this.image,
     required this.name,
-    Key? key,
-    people,
-  }) : super(
-          key: key,
-        );
+    super.key,
+  });
+  final int index;
+  final String name;
+  final CachedNetworkImage image;
 
   @override
   State<SpeciesResultsView> createState() => _SpeciesResultsViewState();
@@ -50,58 +47,71 @@ class _SpeciesResultsViewState extends State<SpeciesResultsView> {
     return FutureBuilder<SpeciesResult?>(
       future: species,
       builder: (context, snapshot) {
-        String name = snapshot.data?.name ?? '';
-        String height = snapshot.data?.average_height ?? '';
-        String averageLifeSpan = snapshot.data?.average_lifespan ?? '';
-        String classification = snapshot.data?.classification ?? '';
-        String eyeColors = snapshot.data?.eye_colors ?? '';
-        String hairColors = snapshot.data?.hair_colors ?? '';
-        String language = snapshot.data?.language ?? '';
-        return speciesProperties(context, name, averageLifeSpan, height, classification,
-            eyeColors, hairColors, language);
+        final name = snapshot.data?.name ?? '';
+        final height = snapshot.data?.average_height ?? '';
+        final averageLifeSpan = snapshot.data?.average_lifespan ?? '';
+        final classification = snapshot.data?.classification ?? '';
+        final eyeColors = snapshot.data?.eye_colors ?? '';
+        final hairColors = snapshot.data?.hair_colors ?? '';
+        final language = snapshot.data?.language ?? '';
+        return speciesProperties(
+          context,
+          name,
+          averageLifeSpan,
+          height,
+          classification,
+          eyeColors,
+          hairColors,
+          language,
+        );
       },
     );
   }
 
   SingleChildScrollView speciesProperties(
-      BuildContext context,
-      String name,
-      String averageLifeSpan,
-      String height,
-      String classification,
-      String eyeColors,
-      String hairColors,
-      String language) {
+    BuildContext context,
+    String name,
+    String averageLifeSpan,
+    String height,
+    String classification,
+    String eyeColors,
+    String hairColors,
+    String language,
+  ) {
     return SingleChildScrollView(
       child: Padding(
         padding: ProjectPaddings.pagePadding,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const SizedBox(
-            height: 10,
-          ),
-          Hero(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Hero(
               tag: 'species${widget.index}',
-              child: Methods().cachedResultImageBox(context, image)),
-          Expanded(
-            flex: 65,
-            child: Methods().dataContainer(
-              context,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Methods().boldAndMediumText('Name: ', name),
-                  Methods().boldAndMediumText('Average Life Span: ', averageLifeSpan),
-                  Methods().boldAndMediumText('Height: ', height),
-                  Methods().boldAndMediumText('Classification: ', classification),
-                  Methods().boldAndMediumText('Eye Colors: ', eyeColors),
-                  Methods().boldAndMediumText('Hair Colors: ', hairColors),
-                  Methods().boldAndMediumText('Language: ', language),
-                ],
+              child: Methods().cachedResultImageBox(context, image),
+            ),
+            Expanded(
+              flex: 65,
+              child: Methods().dataContainer(
+                context,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Methods().boldAndMediumText('Name: ', name),
+                    Methods().boldAndMediumText('Average Life Span: ', averageLifeSpan),
+                    Methods().boldAndMediumText('Height: ', height),
+                    Methods().boldAndMediumText('Classification: ', classification),
+                    Methods().boldAndMediumText('Eye Colors: ', eyeColors),
+                    Methods().boldAndMediumText('Hair Colors: ', hairColors),
+                    Methods().boldAndMediumText('Language: ', language),
+                  ],
+                ),
               ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }

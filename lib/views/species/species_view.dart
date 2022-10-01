@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swapi_flutter/models/species/species.dart';
 import 'package:swapi_flutter/services/network/network_manager.dart';
@@ -7,7 +6,7 @@ import 'package:swapi_flutter/utils/reusableMethods.dart';
 import 'package:swapi_flutter/views/species/species_result_view.dart';
 
 class SpeciesView extends StatefulWidget {
-  const SpeciesView({Key? key}) : super(key: key);
+  const SpeciesView({super.key});
 
   @override
   State<SpeciesView> createState() => _SpeciesViewState();
@@ -31,15 +30,15 @@ class _SpeciesViewState extends State<SpeciesView> {
       ),
       body: FutureBuilder<List<SpeciesResult>?>(
         future: species,
-        builder: ((context, snapshot) {
+        builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
               itemCount: snapshot.data?.length ?? 0,
               itemBuilder: (context, index) {
-                var main = snapshot.data?[index];
-                String name = main?.name ?? '';
-                var imageUrl = '${ConstantTexts().speciesBaseUrl}${index + 1}.jpg';
-                CachedNetworkImage image = Methods().cachedImage(
+                final main = snapshot.data?[index];
+                final name = main?.name ?? '';
+                final imageUrl = '${ConstantTexts().speciesBaseUrl}${index + 1}.jpg';
+                final image = Methods().cachedImage(
                   imageUrl,
                 );
                 return GestureDetector(
@@ -68,7 +67,7 @@ class _SpeciesViewState extends State<SpeciesView> {
                         ),
                         Text(
                           name,
-                          textScaleFactor: 1.0,
+                          textScaleFactor: 1,
                           style:
                               const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                         ),
@@ -82,10 +81,10 @@ class _SpeciesViewState extends State<SpeciesView> {
               },
             );
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text('${snapshot.error}');
           }
           return const Center(child: CircularProgressIndicator());
-        }),
+        },
       ),
     );
   }

@@ -6,17 +6,15 @@ import 'package:swapi_flutter/utils/constants.dart';
 import 'package:swapi_flutter/utils/reusableMethods.dart';
 
 class PlanetResultsView extends StatefulWidget {
-  final int index;
-  final String name;
-  final CachedNetworkImage image;
   const PlanetResultsView({
     required this.index,
     required this.image,
     required this.name,
-    Key? key,
-  }) : super(
-          key: key,
-        );
+    super.key,
+  });
+  final int index;
+  final String name;
+  final CachedNetworkImage image;
 
   @override
   State<PlanetResultsView> createState() => _PlanetResultsViewState();
@@ -50,15 +48,15 @@ class _PlanetResultsViewState extends State<PlanetResultsView> {
     return FutureBuilder<PlanetResults?>(
       future: planet,
       builder: (context, snapshot) {
-        String name = snapshot.data?.name ?? '';
-        String climate = snapshot.data?.climate ?? '';
-        String diameter = snapshot.data?.diameter ?? '';
-        String gravity = snapshot.data?.gravity ?? '';
-        String orbitalPeriod = snapshot.data?.orbital_period ?? '';
-        Object population = snapshot.data?.population ?? '';
-        Object surfaceWater = snapshot.data?.surface_water ?? '';
-        Object rotationPeriod = snapshot.data?.rotation_period ?? '';
-        Object terrain = snapshot.data?.terrain ?? '';
+        final name = snapshot.data?.name ?? '';
+        final climate = snapshot.data?.climate ?? '';
+        final diameter = snapshot.data?.diameter ?? '';
+        final gravity = snapshot.data?.gravity ?? '';
+        final orbitalPeriod = snapshot.data?.orbital_period ?? '';
+        final Object population = snapshot.data?.population ?? '';
+        final Object surfaceWater = snapshot.data?.surface_water ?? '';
+        final Object rotationPeriod = snapshot.data?.rotation_period ?? '';
+        final Object terrain = snapshot.data?.terrain ?? '';
         if (snapshot.hasData) {
           return planetProperties(
             context,
@@ -72,7 +70,7 @@ class _PlanetResultsViewState extends State<PlanetResultsView> {
             orbitalPeriod,
           );
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text('${snapshot.error}');
         }
         return const Center(child: CircularProgressIndicator());
       },
@@ -80,15 +78,16 @@ class _PlanetResultsViewState extends State<PlanetResultsView> {
   }
 
   SingleChildScrollView planetProperties(
-      BuildContext context,
-      String diameter,
-      Object population,
-      String climate,
-      Object terrain,
-      String gravity,
-      Object surfaceWater,
-      Object rotationPeriod,
-      String orbitalPeriod) {
+    BuildContext context,
+    String diameter,
+    Object population,
+    String climate,
+    Object terrain,
+    String gravity,
+    Object surfaceWater,
+    Object rotationPeriod,
+    String orbitalPeriod,
+  ) {
     return SingleChildScrollView(
       child: Padding(
         padding: ProjectPaddings.pagePadding,

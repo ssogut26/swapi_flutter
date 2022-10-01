@@ -8,8 +8,8 @@ import 'package:swapi_flutter/utils/reusableMethods.dart';
 import 'package:swapi_flutter/views/planets/planet_view.dart';
 
 class PlanetsView extends StatefulWidget {
+  PlanetsView({super.key, required this.page});
   int page = 1;
-  PlanetsView({Key? key, required this.page}) : super(key: key);
 
   @override
   State<PlanetsView> createState() => _PlanetsViewState();
@@ -40,7 +40,7 @@ class _PlanetsViewState extends State<PlanetsView> {
   FutureBuilder<List<PlanetResults>?> fetchPlanets() {
     return FutureBuilder<List<PlanetResults>?>(
       future: planets,
-      builder: ((context, snapshot) {
+      builder: (context, snapshot) {
         if (snapshot.hasData) {
           return LayoutBuilder(
             builder: (context, constrains) {
@@ -55,15 +55,17 @@ class _PlanetsViewState extends State<PlanetsView> {
             },
           );
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text('${snapshot.error}');
         }
         return const Center(child: CircularProgressIndicator());
-      }),
+      },
     );
   }
 
   ListView planetList(
-      BuildContext context, AsyncSnapshot<List<PlanetResults>?> snapshot) {
+    BuildContext context,
+    AsyncSnapshot<List<PlanetResults>?> snapshot,
+  ) {
     return ListView.builder(
       shrinkWrap: true,
       clipBehavior: Clip.antiAlias,
@@ -71,19 +73,23 @@ class _PlanetsViewState extends State<PlanetsView> {
       physics: const BouncingScrollPhysics(),
       itemCount: snapshot.data?.length,
       itemBuilder: (context, index) {
-        var main = snapshot.data?[index];
-        String name = main?.name ?? '';
-        String url = main?.url?.substring(30) ?? '';
+        final main = snapshot.data?[index];
+        final name = main?.name ?? '';
+        final url = main?.url?.substring(30) ?? '';
         index = int.parse(url.split('/')[0]);
-        String imageUrl = '${ConstantTexts().planetsBaseUrl}$index.jpg';
-        CachedNetworkImage image = Methods().cachedImage(imageUrl);
+        final imageUrl = '${ConstantTexts().planetsBaseUrl}$index.jpg';
+        final image = Methods().cachedImage(imageUrl);
         return planetCard(context, name, index, image);
       },
     );
   }
 
   GestureDetector planetCard(
-      BuildContext context, String name, int index, CachedNetworkImage image) {
+    BuildContext context,
+    String name,
+    int index,
+    CachedNetworkImage image,
+  ) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -110,7 +116,7 @@ class _PlanetsViewState extends State<PlanetsView> {
             ),
             Text(
               name,
-              textScaleFactor: 1.0,
+              textScaleFactor: 1,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
             ),
             const Divider(
@@ -154,27 +160,28 @@ class _PlanetsViewState extends State<PlanetsView> {
             },
           ),
           DropdownButton(
-              items: List.generate(
-                6,
-                (index) => DropdownMenuItem(
-                  value: index + 1,
-                  child: Text((index + 1).toString()),
-                ),
+            items: List.generate(
+              6,
+              (index) => DropdownMenuItem(
+                value: index + 1,
+                child: Text((index + 1).toString()),
               ),
-              onChanged: (value) {
-                setState(() {
-                  page = value as int;
-                });
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return PlanetsView(page: page);
-                    },
-                  ),
-                );
-              },
-              value: page),
+            ),
+            onChanged: (value) {
+              setState(() {
+                page = value as int;
+              });
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return PlanetsView(page: page);
+                  },
+                ),
+              );
+            },
+            value: page,
+          ),
           IconButton(
             icon: const Icon(Icons.arrow_forward_ios_sharp),
             onPressed: () {
@@ -190,8 +197,8 @@ class _PlanetsViewState extends State<PlanetsView> {
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('End of the planets'),
+                    SnackBar(
+                      content: Text(ConstantTexts().lastPage),
                     ),
                   );
                 }
